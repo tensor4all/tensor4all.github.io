@@ -1,5 +1,5 @@
 Welcome to Tensor4all!
-This is the home page for the Tensor4all organization.</p>
+This is the home page for the Tensor4all organization.
 
 * [C++ documentation](https://xfac.readthedocs.io)
 * [Julia Documentation](https://gitlab.com/groups/tensors4fields/-/wikis/Welcome-to-Tensors4Fields)
