@@ -1,4 +1,3 @@
-# Tensor4all Organization Page
 Welcome to Tensor4all!
 This is the home page for the Tensor4all organization.</p>
 
