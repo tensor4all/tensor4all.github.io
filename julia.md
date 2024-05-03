@@ -14,5 +14,5 @@ But, we recommend starting with the following tutorials:
 * [T4F examples](https://tensors4fields.gitlab.io/T4FExamples) provides a comprehensive set of tutorials on using TCI and quantics representations.
 
 ## For developers & internal users
-Private repositories are still hosted on GitLab.
+Private repositories are still hosted on Tensors4Frields (T4F) group on GitLab.
 * [How to use T4F registry](https://gitlab.com/tensors4fields/tensors4fieldsregistry/-/wikis/home)
