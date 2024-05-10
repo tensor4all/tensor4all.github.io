@@ -6,3 +6,6 @@ We provide various C++/Python/Julia libraries that are useful for applying tenso
 
 * [C++ with Python wrapper](xfac.html)
 * [Julia](julia.html)
+
+
+See the [about](about.html) page for more information about the Tensor4all collaboration.

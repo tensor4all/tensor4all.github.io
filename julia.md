@@ -11,7 +11,7 @@ Our Julia ecosystem consists of the following packages:
 Online documentation for each package is available at the links above.
 But, we recommend starting with the following tutorials:
 
-* [T4F examples](https://tensors4fields.gitlab.io/T4FExamples) provides a comprehensive set of tutorials on using TCI and quantics representations.
+* [T4A Julia Tutorials](http://tensor4all.org/T4AJuliaTutorials/) provides a comprehensive set of tutorials on using TCI and quantics representations.
 
 ## For developers & internal users
 Private repositories are still hosted on Tensors4Frields (T4F) group on GitLab.
