@@ -1,5 +1,5 @@
-Welcome to Tensor4all!
-This is the home page for the Tensor4all organization.
+Welcome to Tensor4All!
+This is the home page for the Tensor4All organization.
 
 We provide various C++/Python/Julia libraries that are useful for applying tensor networks beyond the conventional target, i.e., wavefunctions.
 
@@ -8,4 +8,4 @@ We provide various C++/Python/Julia libraries that are useful for applying tenso
 * [Julia](julia.html)
 
 
-See the [about](about.html) page for more information about the Tensor4all collaboration.
+See the [about](about.html) page for more information about the Tensor4All collaboration.
