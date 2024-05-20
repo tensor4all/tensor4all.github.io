@@ -25,5 +25,5 @@ Deadline: June 14th
 
 ## Organizers
 * Anna Kauch (TU Wien)
-* Markus Wallenberger (TU Wien)
+* Markus Wallerberger (TU Wien)
 * Hiroshi Shinaoka (Saitama Univ.)
