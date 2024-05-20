@@ -14,5 +14,5 @@ But, we recommend starting with the following tutorials:
 * [T4A Julia Tutorials](http://tensor4all.org/T4AJuliaTutorials/) provides a comprehensive set of tutorials on using TCI and quantics representations.
 
 ## For developers & internal users
-Private repositories are still hosted on Tensors4Frields (T4F) group on GitLab.
-* [How to use T4F registry](https://gitlab.com/tensors4fields/tensors4fieldsregistry/-/wikis/home)
+Some public packages are not registered in the Julia General registry.
+To use them, you can add them via [the T4A registry](https://github.com/tensor4all/T4ARegistry).
