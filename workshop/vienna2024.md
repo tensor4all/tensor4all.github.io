@@ -1,31 +1,29 @@
----
-title: Tensor4All meeting 2024 @ Vienna
----
+# Tensor4All meeting 2024 @ Vienna
 
-# About
+## About
 This workshop is focused on developing computational methods based tensor cross interpolation and quantics tensor networks, and other related methods to various problems in physics, chemistry, and beyond. The workshop will bring together researchers working on the development of new methods.
 
-# Dates 
+## Dates
 July 15th-16th (whole days), 2024.
 
-# Program
+## Program
 To be announced
 
-# Venue
+## Venue
 To be announced (TU Wien)
 
-# Accommodations
+## Accommodations
 Please arrange your own hotel accommodations.
 
-# Registration fee
+## Registration fee
 Free
 
-# Registration
+## Registration
 Deadline: June 14th 
 
 [Registration Form](https://docs.google.com/forms/d/e/1FAIpQLScJxNwTIODSNsgASJ7GEk1nczpS_ndfMe6zNqWVz_TpWG7ASg/viewform)
 
-# Organizers
+## Organizers
 * Anna Kauch (TU Wien)
 * Markus Wallenberger (TU Wien)
 * Hiroshi Shinaoka (Saitama Univ.)
