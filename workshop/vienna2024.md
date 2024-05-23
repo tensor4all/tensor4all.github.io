@@ -24,10 +24,12 @@ Deadline: June 14th
 [Registration Form](https://docs.google.com/forms/d/e/1FAIpQLScJxNwTIODSNsgASJ7GEk1nczpS_ndfMe6zNqWVz_TpWG7ASg/viewform)
 
 ## Organizers
-* Anna Kauch (TU Wien)
+* Anna Kauch (TU Wien) [Contact person: kauch@ifp.tuwien.ac.at]
 * Markus Wallerberger (TU Wien)
 * Hiroshi Shinaoka (Saitama Univ.)
 
 ## Support
+* FWF Project No. P 36332-N "Sparse modeling for two-particle response and parquet equations"
+* FWF Project No. V 1018 "Nonlocal correlations in nonequilibrium“
 * [MEXT KAKENHI Grant-in-Aid for Transformative Research Areas (B) "Computational materials science based on quantum-classical hybrid algorithms"](https://qc-hybrid.github.io)
 * MEXT KAKENHI Grant-in-Aid for Fund for the Promotion of Joint International Research (Fostering Joint International Research(A)) "Extension and demonstration of two-particle-level computational theory based on dimensionality reduction to nonlocal electron correlation effects"
