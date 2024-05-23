@@ -12,6 +12,8 @@ To be announced
 ## Venue
 To be announced (TU Wien)
 
+[View on Google Maps](https://www.google.com/maps?q=48.198770390262176,16.36712747549663)
+
 ## Accommodations and Transport
 Please arrange your own hotel accommodations and transport.
 If you have a special request for financial support, please contact us through the registration form or by email.
