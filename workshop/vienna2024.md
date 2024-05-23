@@ -27,3 +27,7 @@ Deadline: June 14th
 * Anna Kauch (TU Wien)
 * Markus Wallerberger (TU Wien)
 * Hiroshi Shinaoka (Saitama Univ.)
+
+## Support
+* [MEXT KAKENHI Grant-in-Aid for Transformative Research Areas (B) "Computational materials science based on quantum-classical hybrid algorithms"](https://qc-hybrid.github.io)
+* MEXT KAKENHI Grant-in-Aid for Fund for the Promotion of Joint International Research (Fostering Joint International Research(A)) "Extension and demonstration of two-particle-level computational theory based on dimensionality reduction to nonlocal electron correlation effects"
