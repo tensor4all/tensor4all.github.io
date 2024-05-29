@@ -1,5 +1,3 @@
-# Tensor4All
-
 ![](tci.png)
 
 This website collects information from the Tensor4All group which is working on tensor network methods.
