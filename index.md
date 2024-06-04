@@ -1,4 +1,4 @@
-![](tci.png)
+![](tci.svg)
 
 This website collects information from the Tensor4All group which is working on tensor network methods.
 
