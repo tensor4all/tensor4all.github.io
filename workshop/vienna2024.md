@@ -7,7 +7,46 @@ This workshop is focused on developing computational methods based tensor cross 
 July 15th-16th (whole days), 2024.
 
 ## Program
-To be announced
+
+### Monday
+
+- 08:55-09:00: Opening
+
+- 09:00-10:00: Marc. K. Ritter (long talk) T.B.A
+
+- 10:00-10:30: Markus Frankenbach (long) “Obtaining Correlation Functions from NRG Spectral Functions using TCI”
+
+- 10:30-11:00: Coffee break & discussion
+
+- 11:00-12:00: Jheng-Wei Li (long talk) “Matrix product states and first quantization”
+
+- 12:00-14:00: Lunch
+
+- 14:00-14:30: Stefan Rohshap (short talk) “Two-particle calculations with QTCI”
+
+- 14:30-15:00: Maksymilian Sroda (short talk) T.B.A.
+
+- 15:00-15:30: Coffee break & discussion
+
+- 15:30-16:00: Hiroshi Shinaoka (short talk) “Divide-and-conquer approaches to QTT”
+
+- 16:00-17:15: Panel discussions: what are the next challenges and obstacles?
+
+- 17:30-19:30: Discussion with dinner
+
+### Tuesday
+
+- 10:00-11:00: Rihito Sakurai (long talk) “Tensor4Finance: Learning
+Fourier-based option price with tensor networks”
+
+- 11:00-11:30: Coffee break & discussion
+
+- 11:30-12:00: Hirone Ishida (short talk) “Low-rank quantics tensor train representations of Feynman diagrams for multiorbital electron-phonon models"
+
+- 12:00-14:00: Lunch
+
+- 14:00-: Hands-on session on Xfac and TensorCrossInterpolation.jl
+
 
 ## Venue
 To be announced (TU Wien)
