@@ -61,7 +61,7 @@ If you have a special request for financial support, please contact us through t
 Free
 
 ## Registration
-Deadline: June 14th 
+Deadline: July 14th 
 
 [Registration Form](https://docs.google.com/forms/d/e/1FAIpQLScJxNwTIODSNsgASJ7GEk1nczpS_ndfMe6zNqWVz_TpWG7ASg/viewform)
 
