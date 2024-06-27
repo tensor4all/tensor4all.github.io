@@ -45,7 +45,7 @@ Fourier-based option price with tensor networks”
 
 - 12:00-14:00: Lunch
 
-- 14:00-: Hands-on session on Xfac and TensorCrossInterpolation.jl
+- 14:00-: (Optional) self-organized hands-on session on Xfac and TensorCrossInterpolation.jl
 
 
 ## Venue
