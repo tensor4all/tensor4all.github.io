@@ -34,6 +34,11 @@ Michael Lindsey<br>
 [arXiv:2311.12554](https://arxiv.org/abs/2311.12554)<br>
 This paper introduces a multiscale polynomial interpolation method for constructing qunatics/quantized tensor trains.
 
+* *A Tensor Train Continuous Time Solver for Quantum Impurity Models*<br>
+A. Erpenbeck, W.-T. Lin, T. Blommel, L. Zhang, S. Iskakov, L. Bernheimer, Y. Núñez-Fernández, G. Cohen, O. Parcollet, X. Waintal, E. Gull<br>
+[arXiv:2303.11199](https://arxiv.org/abs/2303.11199)<br>
+Applications of TCI to the single-impurity Anderson model at equilibrium by calculating the systematic expansion in power of the hybridization of the impurity with the bath.
+
 * *Quantics Tensor Cross Interpolation for High-Resolution Parsimonious Representations of Multivariate Functions*<br>
 Marc K. Ritter, Yuriel Núñez Fernández, Markus Wallerberger, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
 [Phys. Rev. Lett. 132, 056501 (2024)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.056501)<br>
