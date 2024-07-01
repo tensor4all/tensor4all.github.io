@@ -2,7 +2,7 @@
 
 We provide a list of references to the literature related to tensor cross interpolation and quantics tensor networks.
 
-*Please feel to contact us if you would like to add a relevant paper to this list or make a pull request.*
+*Please feel to contact us if you would like to add a relevant paper to this list or make a pull request [here](https://github.com/tensor4all/tensor4all.github.io).*
 
 * *Learning low-rank tensor train representations: new algorithms and libraries*<br>
 Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
