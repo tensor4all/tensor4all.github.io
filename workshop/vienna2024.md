@@ -1,4 +1,4 @@
-# Tensor4All meeting 2024 @ Vienna
+# tensor4all meeting 2024 @ Vienna
 
 ## About
 This workshop is focused on developing computational methods based tensor cross interpolation and quantics tensor networks, and other related methods to various problems in physics, chemistry, and beyond. The workshop will bring together researchers working on the development of new methods.

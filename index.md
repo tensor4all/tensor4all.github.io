@@ -1,6 +1,6 @@
 ![](tci.svg)
 
-This website collects information from the Tensor4All group which is working on tensor network methods.
+This website collects information from the tensor4all group which is working on tensor network methods.
 
 
 ## Literature
@@ -26,4 +26,4 @@ We organize [workshops](workshop/index.html) to discuss the development of new m
 
 ## People
 
-Check the [about](about.html) page to see who is involved in the Tensor4All collaboration.
+Check the [about](about.html) page to see who is involved in the tensor4all collaboration.
