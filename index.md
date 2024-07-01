@@ -10,6 +10,8 @@ A pedagogical introduction to tensor network methods, which includes an overview
 > Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, 
 > *Learning low-rank tensor train representations: new algorithms and libraries*, *in preparation*, (2024).
 
+Please check the [reference](reference.html) page for more information on TCI and quantics tensor trains.
+
 ## Code
 
 We provide two software libraries that implement algorithms from the above manuscript for computing low-rank tensor representations.
