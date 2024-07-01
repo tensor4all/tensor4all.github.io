@@ -7,6 +7,11 @@ We provide a list of references to the literature related to tensor cross interp
 Learning low-rank tensor train representations: new algorithms and libraries*, *in preparation*, (2024)<br>
 This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorith.
 
+* Yuriel Núñez Fernández, Matthieu Jeannin, Philipp T. Dumitrescu, Thomas Kloss, Jason Kaye, Olivier Parcollet, and Xavier Waintal<br>
+*Learning Feynman Diagrams with Tensor Trains*<br>
+[Phys. Rev. X 12, 041018 (2022)](https://doi.org/10.1103/PhysRevX.12.041018)<br>
+This paper introduces Tensor Cross Interpolation (TCI) for learning Feynman diagrams.
+
 * Marc K. Ritter, Yuriel Núñez Fernández, Markus Wallerberger, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
 *Quantics Tensor Cross Interpolation for High-Resolution Parsimonious Representations of Multivariate Functions*<br>
 [Phys. Rev. Lett. 132, 056501 (2024)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.056501)<br>
