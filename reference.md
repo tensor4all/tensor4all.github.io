@@ -1,4 +1,4 @@
-# Reference
+# References
 
 We provide a list of references to the literature related to tensor cross interpolation and quantics tensor networks.
 
@@ -26,7 +26,7 @@ Applications of Quantics Tensor Cross Interpolaiton (QTCI) to multiorbital elect
 
 * *Compactness of quantics tensor train representations of local imaginary-time propagators*
 Haruto Takahashi, Rihito Sakurai, Hiroshi Shinaoka<br>
-[arXiv:2403.09161](https://arxiv.org/abs/2403.09161)
+[arXiv:2403.09161](https://arxiv.org/abs/2403.09161)<br>
 Numerical invetigation of compactness of QTT representations of local imaginary-time propagators, showing the saturation of the bond dimension at low temperature.
 
 * *Multiscale interpolative construction of quantized tensor trains*<br>
@@ -36,12 +36,14 @@ This paper introduces a multiscale polynomial interpolation method for construct
 
 * *A Tensor Train Continuous Time Solver for Quantum Impurity Models*<br>
 A. Erpenbeck, W.-T. Lin, T. Blommel, L. Zhang, S. Iskakov, L. Bernheimer, Y. Núñez-Fernández, G. Cohen, O. Parcollet, X. Waintal, E. Gull<br>
+[Phys. Rev. B 107, 245135 (2023)](https://doi.org/10.1103/PhysRevB.107.245135)<br>
 [arXiv:2303.11199](https://arxiv.org/abs/2303.11199)<br>
 Applications of TCI to the single-impurity Anderson model at equilibrium by calculating the systematic expansion in power of the hybridization of the impurity with the bath.
 
 * *Quantics Tensor Cross Interpolation for High-Resolution Parsimonious Representations of Multivariate Functions*<br>
 Marc K. Ritter, Yuriel Núñez Fernández, Markus Wallerberger, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
 [Phys. Rev. Lett. 132, 056501 (2024)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.056501)<br>
+[arXiv:2303.11819](https://arxiv.org/abs/2303.11819)<br>
 This paper introduces quantics tensor cross interpolation (QTCI) for high-resolution parsimonious representations of multivariate functions.
 
 
