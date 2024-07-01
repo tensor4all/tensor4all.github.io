@@ -5,7 +5,7 @@ We provide a list of references to the literature related to tensor cross interp
 
 * Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
 Learning low-rank tensor train representations: new algorithms and libraries*, *in preparation*, (2024)<br>
-This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorith.
+This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithm.
 
 * Yuriel Núñez Fernández, Matthieu Jeannin, Philipp T. Dumitrescu, Thomas Kloss, Jason Kaye, Olivier Parcollet, and Xavier Waintal<br>
 *Learning Feynman Diagrams with Tensor Trains*<br>
