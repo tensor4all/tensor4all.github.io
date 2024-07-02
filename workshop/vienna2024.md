@@ -49,7 +49,7 @@ Fourier-based option price with tensor networks”
 
 
 ## Venue
-To be announced (TU Wien)
+Freihaus Hoersaal 8, 2nd floor, yellow area opposite the elevators (TU Wien)
 
 [View on Google Maps](https://www.google.com/maps?q=48.198770390262176,16.36712747549663)
 
