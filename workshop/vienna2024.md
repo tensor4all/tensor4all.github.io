@@ -75,3 +75,7 @@ Deadline: July 14th
 * FWF Project No. V 1018 "Nonlocal correlations in nonequilibrium“
 * [MEXT KAKENHI Grant-in-Aid for Transformative Research Areas (B) "Computational materials science based on quantum-classical hybrid algorithms"](https://qc-hybrid.github.io)
 * MEXT KAKENHI Grant-in-Aid for Fund for the Promotion of Joint International Research (Fostering Joint International Research(A)) "Extension and demonstration of two-particle-level computational theory based on dimensionality reduction to nonlocal electron correlation effects"
+
+<img src="./FWF_Logo_Zusatz_Dunkelblau_RGB_EN.png" alt="FWF" width="30%"/>
+<img src="./KAKENHIlogo_M.jpg" alt="FWF" width="15%"/>
+<img src="./QCHybrid-logo-RGB03.png" alt="FWF" width="20%"/>
