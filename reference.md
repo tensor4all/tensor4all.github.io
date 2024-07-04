@@ -6,7 +6,7 @@ We provide a list of references to the literature related to tensor cross interp
 
 * *Learning low-rank tensor train representations: new algorithms and libraries*<br>
 Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
-*in preparation*, (2024)<br>
+[arXiv:2407.02454](https://arxiv.org/abs/2407.02454)<br>
 This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithm.
 
 * *Learning parameter dependence for Fourier-based option pricing with tensor trains*<br>
