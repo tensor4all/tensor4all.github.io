@@ -7,8 +7,7 @@ This website collects information from the tensor4all group which is working on 
 
 A pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithms, can be found in:
 
-> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, 
-> *Learning low-rank tensor train representations: new algorithms and libraries*, *in preparation*, (2024).
+> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, [arXiv:2407.02454](https://arxiv.org/abs/2407.02454).
 
 Please check the [reference](reference.html) page for more information on TCI and quantics tensor trains.
 
