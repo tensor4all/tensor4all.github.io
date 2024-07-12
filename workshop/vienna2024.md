@@ -12,7 +12,7 @@ July 15th-16th (whole days), 2024.
 
 - 08:55-09:00: Opening
 
-- 09:00-10:00: Marc. K. Ritter (long talk) T.B.A
+- 09:00-10:00: Marc. K. Ritter (long talk) "New algorithms for Tensor Cross Interpolation"
 
 - 10:00-10:30: Markus Frankenbach (long) “Obtaining Correlation Functions from NRG Spectral Functions using TCI”
 
