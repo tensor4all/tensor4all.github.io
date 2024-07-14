@@ -24,7 +24,7 @@ July 15th-16th (whole days), 2024.
 
 - 14:00-14:30: Stefan Rohshap (short talk) “Two-particle calculations with QTCI”
 
-- 14:30-15:00: Maksymilian Sroda (short talk) T.B.A.
+- 14:30-15:00: Maksymilian Sroda (short talk) "Nonequilibrium Green’s functions calculations with QTT".
 
 - 15:00-15:30: Coffee break & discussion
 
