@@ -20,7 +20,10 @@ It also contain known and new variants of the tensor cross interpolation (TCI) a
 One code is called Xfac (written in C++ with Python bindings), and a second implementation with similar functionality is based on Julia:
 
 * [Xfac (C++ / Python)](https://xfac.readthedocs.io/en/latest/intro.html)
-* [Julia code](julia.html)
+* [Julia](julia.html)
+
+## Monthly online meeting
+We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list. Please contact [us](<mailto:h.shinaoka@gmail.com>) if you would like to join the mailing list.
 
 ## Workshops
 
