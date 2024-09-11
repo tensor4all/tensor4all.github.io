@@ -12,7 +12,7 @@ July 15th-16th (whole days), 2024.
 
 - 08:55-09:00: Opening
 
-- 09:00-10:00: Marc. K. Ritter (long talk) T.B.A
+- 09:00-10:00: Marc. K. Ritter (long talk) "New algorithms for Tensor Cross Interpolation"
 
 - 10:00-10:30: Markus Frankenbach (long) “Obtaining Correlation Functions from NRG Spectral Functions using TCI”
 
@@ -24,7 +24,7 @@ July 15th-16th (whole days), 2024.
 
 - 14:00-14:30: Stefan Rohshap (short talk) “Two-particle calculations with QTCI”
 
-- 14:30-15:00: Maksymilian Sroda (short talk) T.B.A.
+- 14:30-15:00: Maksymilian Sroda (short talk) "Nonequilibrium Green’s functions calculations with QTT".
 
 - 15:00-15:30: Coffee break & discussion
 
@@ -49,7 +49,7 @@ Fourier-based option price with tensor networks”
 
 
 ## Venue
-Freihaus Hoersaal 8, 2nd floor, yellow area opposite the elevators (TU Wien)
+Freihaus Hoersaal 8, 2nd floor, yellow area opposite the elevators (TU Wien, Wiedner Hauptstraße 8-10, 1130 Vienna)
 
 [View on Google Maps](https://www.google.com/maps?q=48.198770390262176,16.36712747549663)
 
