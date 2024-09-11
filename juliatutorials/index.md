@@ -22,9 +22,9 @@ Additionally, we provide some topics on Julia packages such as:
 This documentation provides examples of using these libraries to perform QTCI and other operations.
 
 
-## List of tutorials
+## Notebooks
 
-You can find our tutorials [here](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/)!
+You can find our [Pluto notebooks](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/)!
 If you are interested in running the tutorials on your local machine, please follow the instructions below.
 
 ## Preparation
