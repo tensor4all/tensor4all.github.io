@@ -1,4 +1,4 @@
-# Tensor4all Julia Tutorials
+# Julia tutorials
 
 This documentation provides a comprehensive tutorials/examples
 on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).

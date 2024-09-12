@@ -9,9 +9,7 @@ Our Julia ecosystem consists of the following packages:
 
 ### Tutorials
 Online documentation for each package is available at the links above.
-But, we recommend starting with the following tutorials:
-
-* [T4A Julia Tutorials](http://tensor4all.org/T4AJuliaTutorials/) provides a comprehensive set of tutorials on using TCI and quantics representations.
+But, we recommend starting with [our Julia tutorials](/juliatutorials/index.html).
 
 ## For developers & internal users
 Some public packages are not registered in the Julia General registry.
