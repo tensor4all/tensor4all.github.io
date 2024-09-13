@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-- [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1)?
+- [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1)
 
 
 ---
