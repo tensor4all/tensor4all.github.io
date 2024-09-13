@@ -24,6 +24,15 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 ## Monthly online meeting
 We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list. Please contact [us](<mailto:h.shinaoka@gmail.com>) if you would like to join the mailing list.
 
+Previous meetings:
+
+* Auguest 26th, 2024
+* July 1st, 2024
+* June 3rd, 2024
+* April 22th, 2024
+* March 25th, 2024
+* February 22nd, 2024
+
 ## Workshops
 
 We organize [workshops](workshop/index.html) to discuss the development of new methods.
@@ -31,3 +40,6 @@ We organize [workshops](workshop/index.html) to discuss the development of new m
 ## People
 
 Check the [about](about.html) page to see who is involved in the tensor4all collaboration.
+
+## Frequently Asked Questions
+We have a [FAQ](faq.html) page to answer common questions.
