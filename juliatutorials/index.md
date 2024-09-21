@@ -21,7 +21,6 @@ Additionally, we provide some topics on Julia packages such as:
 
 This documentation provides examples of using these libraries to perform QTCI and other operations.
 
-
 ## Notebooks
 
 You can find our [Pluto notebooks](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/)!
@@ -65,7 +64,7 @@ You can check that `julia` is installed correctly by simply running `julia` in y
   (_)     | (_) (_)    |
    _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
   | | | | | | |/ _` |  |
-  | | |_| | | | (_| |  |  Version 1.10.1 (2024-02-13)
+  | | |_| | | | (_| |  |  Version 1.10.5 (2024-08-27)
  _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
 |__/                   |
 
