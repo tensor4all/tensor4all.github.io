@@ -50,7 +50,7 @@ Juliaup can be installed on Linux or Mac by executing
 
 <!-- #region -->
 ```sh
-$ curl -fsSL https://install.julialang.org | sh
+$ curl -fsSL https://install.julialang.org | sh -s -- --yes
 ```
 
 <!-- #endregion -->
