@@ -92,41 +92,51 @@ julia> exit()
 
 See the official documentation at [The Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) to learn more.
 
-### Install required packages
+### How to open Pluto notebooks locally
 
-One can install required packages by running the following command on your shell:
-
-
-<!-- #region -->
-```sh
-git clone git@github.com:tensor4all/T4AJuliaTutorials.git
-cd T4AJuliaTutorials
-julia --project scripts/setup.jl
-```
-
-<!-- #endregion -->
-
-Here, the `--project` option activates our project, which is characterized by `Project.toml`, and `scripts/setup.jl` installs dependencies needed to run our notebooks.
-
-<!-- #region -->
-Keep in mind that [Quantics.jl](https://github.com/tensor4all/Quantics.jl) is not registered in [Julia's General registry](https://github.com/JuliaRegistries/General/tree/master). To run `qft.jl`, we need to add [T4ARegistry](https://github.com/tensor4all/T4ARegistry).
+Our tutorials are written in [Pluto.jl](https://plutojl.org/) notebook. To open Pluto notebooks locally, clone our [tutorial repository T4APlutoExamples](https://github.com/tensor4all/T4APlutoExamples) and navigate to directory `T4APlutoExamples`:
 
 ```sh
-julia --project -e 'using Pkg; Pkg.Registry.add(RegistrySpec(url="https://github.com/tensor4all/T4ARegistry.git"))'
+$ git clone https://github.com/tensor4all/T4APlutoExamples.git
+$ cd T4APlutoExamples
+$ Manifest.toml   Project.toml    README.md       pluto_notebooks scripts
 ```
 
-<!-- #endregion -->
+Then we also need to install Pluto.jl. To do this, type `julia --project` in a terminal to open Julia REPL and run the following julia code:
 
-### Print out the status of the project
+```julia-repl
+$ julia --project
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.10.5 (2024-08-27)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
 
-Having trouble? Try the following command in your Julia's REPL. On GitHub Actions instance we'll get:
-
-
-```julia
-using Dates;
-now(UTC);
-VERSION # display Julia version
-using Pkg;
-Pkg.status();
+julia> using Pkg; Pkg.instantiate()
+  Activating project at `~/tensor4all/T4APlutoExamples`
 ```
 
+Continued from previous REPL session, launch Pluto server locally via:
+
+```julia-repl
+julia> using Pluto; Pluto.run()
+[ Info: Loading...
+┌ Info:
+└ Opening http://localhost:1234/?secret=xxxxxx in your default browser... ~ have fun!
+┌ Info:
+│ Press Ctrl+C in this terminal to stop Pluto
+└
+```
+
+This will open http://localhost:1234/?secret=xxxxxx in your default browser and you will see the following main menu of Pluto notebook:
+
+![](https://raw.githubusercontent.com/tensor4all/T4APlutoExamples/refs/heads/main/assets/open_welcome.png)
+
+To open notebooks under `pluto_notebooks` directory, type `pluto_notebooks/welcome.jl` to text area under `Open a notebook` section. Then, press `Open` button.
+
+## Software guide(T4AJuliaTutorials wiki)
+
+[T4AJuliaTutorials/wiki](https://github.com/tensor4all/T4AJuliaTutorials/wiki) provides basic tutorials about software development. For example How to set up a development environment on [Windows](https://github.com/tensor4all/T4AJuliaTutorials/wiki/Instructions-for-setting-up-a-development-environment-on-Windows(PowerShell,-winget)), [macOS](https://github.com/tensor4all/T4AJuliaTutorials/wiki/Instructions-for-setting-up-a-development-environment-on-macOS) and [Linux and WSL2](https://github.com/tensor4all/T4AJuliaTutorials/wiki/Instructions-for-setting-up-a-development-environment-on-Linux(Ubuntu,-WSL2)).
