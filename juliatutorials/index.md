@@ -17,7 +17,7 @@ The folowing list is given in the order of low-level to high-level libraries:
 
 Additionally, we provide some topics on Julia packages such as:
 
-- [Plots.jl](plots.ipynb). Basic tutorial for plotting using Plots.jl.
+- [Plots.jl](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/plots.html). Basic tutorial for plotting using Plots.jl.
 
 This documentation provides examples of using these libraries to perform QTCI and other operations.
 
