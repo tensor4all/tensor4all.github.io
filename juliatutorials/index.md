@@ -1,33 +1,14 @@
 # Julia tutorials
 
-This documentation provides a comprehensive tutorials/examples
-on quantics and tensor cross interpolation (TCI) and their combinations (QTCI).
-These technologies allow us to reveal low-rank tensor network representation (TNR) hidden in data or a function,
-and perform computation such as Fourier transform and convolution.
-Please refer [xfacpaper](https://arxiv.org/abs/2407.02454) for a more detailed introduction of these concepts.
-
-## Overview of libraries
-The T4A group hosts various Julia libraries for performing such operations.
-The folowing list is given in the order of low-level to high-level libraries:
-
-- [TensorCrossInterpolation.jl](https://github.com/tensor4all/TensorCrossInterpolation.jl/) provides implementations of TCI.
-- [QuanticsGrids.jl](https://github.com/tensor4all/QuanticsGrids.jl/) provides utilities for handling quantics representations, e.g., creating a quantics grid and transformation between the original coordinate system and the quantics representation.
-- [QuanticsTCI.jl](https://github.com/tensor4all/QuanticsTCI.jl/) is a thin wrapper around `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`, providing valuable functionalities for non-expert users' performing quantics TCI (QTCI).
-- [TCIITensorConversion.jl](https://github.com/tensor4all/TCIITensorConversion.jl/) provides conversions of tensor trains between `TensorCrossInterpolation.jl` and `ITensors.jl`.
-- [Quantics.jl](https://github.com/tensor4all/Quantics.jl/) is an experimental library providing a high-level API for performing operations in QTT. This library is under development and its API may be subject to change. The library is not yet registered in the Julia package registry.
-
-Additionally, we provide some topics on Julia packages such as:
-
-- [Plots.jl](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/plots.html). Basic tutorial for plotting using Plots.jl.
-
-This documentation provides examples of using these libraries to perform QTCI and other operations.
-
 ## Steps to view/run the tutorials
 
-You can visit [our notebook page](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/) by a web browser.
-We recommend *not to use Safari browser* because it may not work properly.
+You can view [our notebook page](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/) by a web browser.
 
-To run the notebooks locally, please install Julia following the [instructions](#install-julia) and the follow the steps in the notebook page.
+If you want to run the notebooks interactively,
+please install `Julia` following the [instructions](#install-julia).
+At the top of each notebook,
+you can find instructions on how to run a notebook on a local web browser.
+We recommend *not to use Safari browser* because the interactive features may not work properly.
 
 Only if you are interested in advanced topics or developers, you can visit [our advanced topics page](advanced.html).
 
