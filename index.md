@@ -26,6 +26,7 @@ We have a monthly online meeting to discuss the development of new methods and a
 
 Previous meetings:
 
+* September 30th, 2024
 * Auguest 26th, 2024
 * July 1st, 2024
 * June 3rd, 2024
