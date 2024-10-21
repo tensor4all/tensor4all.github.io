@@ -21,6 +21,7 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 * [Xfac (C++ / Python)](https://xfac.readthedocs.io/en/latest/intro.html)
 * [Julia](julia.html)
 
+<a id="onlinemeeting"></a>
 ## Monthly online meeting
 We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list. Please contact [us](<mailto:h.shinaoka@gmail.com>) if you would like to join the mailing list.
 
