@@ -1,13 +1,13 @@
 ![](tci.svg)
 
-This website collects information from the tensor4all group which is working on tensor network methods.
+This website collects information from the tensor4all group which is working on tensor network methods based on tensor cross interpolation (TCI) and related tensor learning algorithms such as quantics/quantized tensor trains.
 
 
 ## Literature
 
 A pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithms, can be found in:
 
-> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, [arXiv:2407.02454](https://arxiv.org/abs/2407.02454).
+> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, "Learning tensor networks with tensor cross interpolation: new algorithms and libraries", [arXiv:2407.02454](https://arxiv.org/abs/2407.02454).
 
 Please check the [reference](reference.html) page for more information on TCI and quantics tensor trains.
 
@@ -23,13 +23,13 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 
 <a id="onlinemeeting"></a>
 ## Monthly online meeting
-We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list. Please contact [us](<mailto:h.shinaoka@gmail.com>) if you would like to join the mailing list.
+We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list (49 registered users as of November 4th, 2024). Please contact [us](<mailto:h.shinaoka@gmail.com>) if you would like to join the mailing list.
 
 Previous meetings:
 
 * October 29th, 2024
 * September 30th, 2024
-* Auguest 26th, 2024
+* August 26th, 2024
 * July 1st, 2024
 * June 3rd, 2024
 * April 22th, 2024
