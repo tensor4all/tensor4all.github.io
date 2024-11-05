@@ -32,21 +32,38 @@ Using our libraries, it is easy to try whether some function or dataset of inter
 In tensor network algorithms, tensor trains or MPS are usually constructed using the [*singular value decomposition*](https://en.wikipedia.org/wiki/Singular_value_decomposition) (SVD) and truncation by singular values. It has been shown that this compression is optimal in the L2-norm of the resulting error. However, SVD can only be performed with knowledge of all components of the original tensor. In contrast, TCI is able to construct a tensor train using only a subset of components, such that the full tensor never has to be constructed explicitly. Thus, it is possible to construct a tensor train for tensors that would never fit into memory!
 
 ### How does Tensor Cross Interpolation (TCI) work?
-Very briefly, TCI is a sweeping optimization algorithm. It starts from a tensor train with very small bond dimension, and then optimizes it using a series of local updates.
+Very briefly, TCI is a sweeping optimization algorithm. It starts from a tensor train with very small bond dimension, and then optimizes it using a series of local updates. This initial tensor train is constructed from a set of initial pivots, i.e. initial sample points. 
 
-For local updates, it relies on the *cross interpolation* (CI) factorization instead of SVD. CI extracts a subset of rows and columns of some matrix to be factorized, and arranges the rows and columns in the following structure:
+For local updates, it relies on the *cross interpolation* (CI) factorization instead of SVD. CI extracts a subset of rows (blue) and columns (red) of some matrix to be factorized, and arranges the rows and columns in the following structure:
 
 ![](mci.svg)
+
+All red, blue, and purple elements of the original matrix are approximated exactly, i.e. without error.
+The elements where a row and column cross (purple) are called  *pivots*. Since the pivots fully determine the subset of rows and columns, optimizing a CI boils down to optimizing the pivots.
 
 CI has the important advantage that all components of the resulting factorization are components of the original matrix. This means that the tensor generalization, TCI, can be constructed and optimized using small slices of the original tensor, and an explicit representation of the full tensor is not required.
 
 TCI is explained in detail in [NunezFernandez2024](https://arxiv.org/abs/2407.02454).
 
+### What is a "pivot" in the context of TCI?
+Roughly, an element of the original tensor that is included in the tensor train approximation. If the pivot was chosen by TCI, it is an element of the original tensor that contributes important information; see also ["How does Tensor Cross Interpolation (TCI) work?"](#how-does-tensor-cross-interpolation-tci-work).
+
+If the nesting condition is met, the pivots are represented exactly by the tensor train, i.e. with 0 error (see [NunezFernandez2024](https://arxiv.org/abs/2407.02454)).
+
 ### What is the relation between Tensor Cross Interpolation (TCI) and machine learning?
 Tensor Cross Interpolation (TCI) can be seen as a machine learning algorithm, in that it samples a small subset of a large dataset (the tensor to be approximated) to learn a representation (the tensor train) that should generalize to the whole dataset. It is an active learning algorithm in that the sampled subset is not given externally, but dynamically chosen by the algorithm based on what it has learned so far.
 
 ### What are differences from other tensor network libraries that support machine learning?
-
 A critical difference is that our library is based on Tensor Cross Interpolation (TCI). TCI allows us to compute tensor networks with a low-rank representation by exploring a tiny subset of the full tensor. This opens up the possibility of applying tensor networks to unconventional applications such as high-dimensional integration, i.e., replacing Monte Carlo integration.
+
+### What are the limitations of your Tensor Cross Interpolation (TCI) algorithms? When do they fail?
+As explained [above](#what-is-the-relation-between-tensor-cross-interpolation-tci-and-machine-learning), TCI is a machine learning algorithm that only samples a small subset of tensor components to learn the whole tensor. This leads to an inherent limitation: The fact that all samples seen by the algorithm match some learned structure does not ensure that this structure extends to all other components of the tensor; nor does it imply that no additional structure is present in the components not sampled so far. This limitation cannot, in principle, be avoided by sampling algorithms.
+
+This limitation implies that one has to be careful when applying TCI to tensors or functions that have several disconnected "interesting regions" (with lots of structure) that are separated by "boring regions" (with trivial structure). Since 2-site TCI optimizes pairs of neighbouring tensors, two interesting regions are connected if they can be reached by updating a pair neighbouring indices. If your function of interest has several disconnected interesting regions, it may happen that only the region that contains the [intial pivot](#how-does-tensor-cross-interpolation-tci-work) is approximated correctly, and the algorithm never samples the disconnected structure. Such cases can be fixed by specifying at least one initial pivot in each region, as described in the documentation:
+- **Julia**: [Use the argument `initialpivots` of `crossinterpolate2`.](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.crossinterpolate2-Union{Tuple{N},%20Tuple{ValueType},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}}},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}},%20Vector{Vector{Int64}}}}%20where%20{ValueType,%20N})
+- **C++/Python**: [Set the value of `pivot1` in the `TensorCI2Param` struct.](https://xfac.readthedocs.io/en/latest/api/api1.html#_CPPv4N4xfac14TensorCI2ParamE)
+
+### My function / tensor is approximated well in one region, but not in another region. Why?
+This is a typical symptom of the limitation described in ["What are the limitations of your Tensor Cross Interpolation (TCI) algorithms? When do they fail?"](#what-are-the-limitations-of-your-tensor-cross-interpolation-tci-algorithms-when-do-they-fail). The answer also describes how to solve this problem.
 
 ---
