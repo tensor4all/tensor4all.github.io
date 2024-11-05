@@ -19,15 +19,28 @@ These tutorials should enable you to implement the most common use cases. In man
 - **C++/Python**: [Documentation](https://xfac.readthedocs.io/en/latest/intro.html)
 
 ### Are all tensors/functions compressible?
-No. Random noise, for example, is not compressible. The tensor train format exploits *structure* for its compression, and random noise lacks any structure that can be used for this purpose.
-More generally, the tensor train is a partial factorization of a tensor. If the tensor is a discretized function of many arguments, the tensor train is efficient if the function is close to being factorizable in its arguments. For a function in quantics representation, the tensor is factorizable if the function is factorizable in its length scales. This includes all polynomials and linear combinations of exponential functions. If multiple factorizable structures are added or multiplied in the function, the function is typically also compressible.
+No: random noise, for example, is not compressible. The tensor train format exploits *structure* for its compression, and random noise lacks any structure that can be used for this purpose.
+More generally, the tensor train is a partial factorization of a tensor. If the tensor is a discretized function of many arguments, the tensor train is efficient if the function is close to being factorizable in its arguments. For a function in quantics representation, the tensor is factorizable if the function is factorizable in its length scales. This includes all polynomials and linear combinations of exponential functions ([Lindsey2024](https://arxiv.org/abs/2311.12554)). If multiple factorizable structures are added or multiplied in the function, the function is typically also compressible.
 
 Beyond the arguments above, our understanding of the compressibility of functions in tensor train format is still evolving and the subject of current research.
 If you are interested in a specific use case, is often easier to just try out whether some function of interest is compressible using an existing dataset. Instructions for this can be found in ["How can I test whether my data is TCI compressible?"](#how-can-i-test-whether-my-data-is-tci-compressible).
 
 ### How can I test whether my data is TCI compressible?
-
 Using our libraries, it is easy to try whether some function or dataset of interest is compressible. [The tutorial on compressing existing data](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/compress.html) demonstrates how to do this for TCI and quantics TCI. Replace the tutorial dataset with your own and set the tolerance to whatever precision you require. Note that the tolerance has to be set well above the noise level in your dataset to get an accurate idea about the compressibility of your dataset. Otherwise, TCI will try to compress your random noise, which may lead to an extreme increase in bond dimension.
+
+### What is the difference between SVD-based and TCI compression?
+In tensor network algorithms, tensor trains or MPS are usually constructed using the [*singular value decomposition*](https://en.wikipedia.org/wiki/Singular_value_decomposition) (SVD) and truncation by singular values. It has been shown that this compression is optimal in the L2-norm of the resulting error. However, SVD can only be performed with knowledge of all components of the original tensor. In contrast, TCI is able to construct a tensor train using only a subset of components, such that the full tensor never has to be constructed explicitly. Thus, it is possible to construct a tensor train for tensors that would never fit into memory!
+
+### How does TCI work?
+Very briefly, TCI is a sweeping optimization algorithm. It starts from a tensor train with very small bond dimension, and then optimizes it using a series of local updates.
+
+For local updates, it relies on the *cross interpolation* (CI) factorization instead of SVD. CI extracts a subset of rows and columns of some matrix to be factorized, and arranges the rows and columns in the following structure:
+
+![](mci.svg)
+
+CI has the important advantage that all components of the resulting factorization are components of the original matrix. This means that the tensor generalization, TCI, can be constructed and optimized using small slices of the original tensor, and an explicit representation of the full tensor is not required.
+
+TCI is explained in detail in [NunezFernandez2024](https://arxiv.org/abs/2407.02454).
 
 ### What are differences from other tensor network libraries that support machine learning?
 
