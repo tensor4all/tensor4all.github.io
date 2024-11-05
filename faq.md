@@ -31,7 +31,7 @@ Using our libraries, it is easy to try whether some function or dataset of inter
 ### What is the difference between SVD-based and TCI compression?
 In tensor network algorithms, tensor trains or MPS are usually constructed using the [*singular value decomposition*](https://en.wikipedia.org/wiki/Singular_value_decomposition) (SVD) and truncation by singular values. It has been shown that this compression is optimal in the L2-norm of the resulting error. However, SVD can only be performed with knowledge of all components of the original tensor. In contrast, TCI is able to construct a tensor train using only a subset of components, such that the full tensor never has to be constructed explicitly. Thus, it is possible to construct a tensor train for tensors that would never fit into memory!
 
-### How does TCI work?
+### How does Tensor Cross Interpolation (TCI) work?
 Very briefly, TCI is a sweeping optimization algorithm. It starts from a tensor train with very small bond dimension, and then optimizes it using a series of local updates.
 
 For local updates, it relies on the *cross interpolation* (CI) factorization instead of SVD. CI extracts a subset of rows and columns of some matrix to be factorized, and arranges the rows and columns in the following structure:
@@ -41,6 +41,9 @@ For local updates, it relies on the *cross interpolation* (CI) factorization ins
 CI has the important advantage that all components of the resulting factorization are components of the original matrix. This means that the tensor generalization, TCI, can be constructed and optimized using small slices of the original tensor, and an explicit representation of the full tensor is not required.
 
 TCI is explained in detail in [NunezFernandez2024](https://arxiv.org/abs/2407.02454).
+
+### What is the relation between Tensor Cross Interpolation (TCI) and machine learning?
+Tensor Cross Interpolation (TCI) can be seen as a machine learning algorithm, in that it samples a small subset of a large dataset (the tensor to be approximated) to learn a representation (the tensor train) that should generalize to the whole dataset. It is an active learning algorithm in that the sampled subset is not given externally, but dynamically chosen by the algorithm based on what it has learned so far.
 
 ### What are differences from other tensor network libraries that support machine learning?
 
