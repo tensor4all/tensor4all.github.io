@@ -66,4 +66,18 @@ This limitation implies that one has to be careful when applying TCI to tensors 
 ### My function / tensor is approximated well in one region, but not in another region. Why?
 This is a typical symptom of the limitation described in ["What are the limitations of your Tensor Cross Interpolation (TCI) algorithms? When do they fail?"](#what-are-the-limitations-of-your-tensor-cross-interpolation-tci-algorithms-when-do-they-fail). The answer also describes how to solve this problem.
 
+### When is it advisable to use the quantics representation?
+In the quantics representation, the tensor indices correspond to bits of the function arguments instead of function arguments themselves. This leads to exponential resolution for linear number of bits. Generally, the quantics representation is useful if a function has few arguments, but high resolution is required in each argument, whilst the natural representation is more useful if a function has many arguments, but only coarse resolution is required.
+
+Of course, this hinges on whether the resulting tensor is factorizable in its indices. In the natural representation, factorizing the tensor means factorizing dependencies on different arguments of the function. In the quantics representation, factorizing the tensor means factorizing the different length scales of the function. Therefore, small bond dimension in one representation does *not* imply small bond dimension in the other.
+
+### In the quantics representation, which index ordering is optimal?
+This depends entirely on the function to be factorized. Generally, the bond dimension will grow with the distance along the chain that information has to be transferred. Different index orderings can lead to vastly different bond dimensions.
+Some rules of thumb:
+- If different arguments are highly entangled, but not different length scales, use the fused representation.
+- If the function can be factorized both between different arguments and between different length scales, use the interleaved representation.
+- If the function is more factorizable between different arguments than between length scales, use the serial representation, or similar.
+
+This is another point where it is worth trying different factorizations on some test dataset that contains a typical case.
+
 ---
