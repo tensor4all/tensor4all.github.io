@@ -117,6 +117,15 @@ In quantics representation, the correspondence is as follows:
 | Matrix product or integral transform | MPO-MPO contraction (in fused representation) | [`contract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.contract-Union{Tuple{V2},%20Tuple{V1},%20Tuple{TensorTrain{V1,%204},%20TensorTrain{V2,%204}}}%20where%20{V1,%20V2}) | | 6.2 |
 | Fourier transform | Apply fourier transform MPO to QTT | [`quanticsfouriermpo`](https://tensor4all.org/QuanticsTCI.jl/dev/apireference/#QuanticsTCI.quanticsfouriermpo-Tuple{Int64}) and [`contract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.contract-Union{Tuple{V2},%20Tuple{V1},%20Tuple{TensorTrain{V1,%204},%20TensorTrain{V2,%204}}}%20where%20{V1,%20V2}); see [this tutorial](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/qft.html) | | 6.2, A.5 |
 
+### Can tensor trains generated with tensor4all tools be manipulated using other tensor libraries such as iTensor?
+For the julia version of our libraries, we have implemented a small helper library called [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl). It allows convenient bidirectional conversion between our TCI/TT objects and iTensor MPS/MPO objects through the constructor:
+```julia
+tt = TCI.TensorTrain(#=something=#)
+mpo = ITensors.MPO(tt)
+tt2 = TCI.TensorTrain{Float64, 4}(mpo)
+```
+If you wish to use other libraries and/or have already written code for conversion between the other library and tensor4all objects, feel free to contact us to set up a similar conversion library.
+
 
 
 ---
