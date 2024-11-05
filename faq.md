@@ -1,11 +1,35 @@
 # Frequently Asked Questions
 
-- [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1)
+<!-- - [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1) -->
 
+1. placeholder
+{:toc}
 
 ---
 
-### <a id="q1">Q1</a>
+### How do I get started?
+We have an extensive set of online tutorials that teach you how to use our libraries, for both the Julia and C++/Python version of our library.
+
+- **Julia**: Tutorials are available [online](https://tensor4all.org/juliatutorials/index.html) and can be run in your web browser. If you wish to run notebooks locally on your computer, install julia using the [installation instructions](https://tensor4all.org/juliatutorials/index.html#install-julia), then copy-paste the instructions at the top of each online notebook to download and run that specific notebook.
+- **C++/Python**: Install the library using the [installation instructions](https://github.com/tensor4all/xfac/blob/main/README.md#installation), then follow the [tutorial pages](https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html).
+
+These tutorials should enable you to implement the most common use cases. In many cases, it is sufficient to copy-paste and slightly modify some tutorial code. For more advanced use cases, you may wish to consult the documentation:
+
+- **Julia**: [Documentation](https://tensor4all.org/julia.html)
+- **C++/Python**: [Documentation](https://xfac.readthedocs.io/en/latest/intro.html)
+
+### Are all tensors/functions compressible?
+No. Random noise, for example, is not compressible. The tensor train format exploits *structure* for its compression, and random noise lacks any structure that can be used for this purpose.
+More generally, the tensor train is a partial factorization of a tensor. If the tensor is a discretized function of many arguments, the tensor train is efficient if the function is close to being factorizable in its arguments. For a function in quantics representation, the tensor is factorizable if the function is factorizable in its length scales. This includes all polynomials and linear combinations of exponential functions. If multiple factorizable structures are added or multiplied in the function, the function is typically also compressible.
+
+Beyond the arguments above, our understanding of the compressibility of functions in tensor train format is still evolving and the subject of current research.
+If you are interested in a specific use case, is often easier to just try out whether some function of interest is compressible using an existing dataset. Instructions for this can be found in ["How can I test whether my data is TCI compressible?"](#how-can-i-test-whether-my-data-is-tci-compressible).
+
+### How can I test whether my data is TCI compressible?
+
+Using our libraries, it is easy to try whether some function or dataset of interest is compressible. [The tutorial on compressing existing data](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/compress.html) demonstrates how to do this for TCI and quantics TCI. Replace the tutorial dataset with your own and set the tolerance to whatever precision you require. Note that the tolerance has to be set well above the noise level in your dataset to get an accurate idea about the compressibility of your dataset. Otherwise, TCI will try to compress your random noise, which may lead to an extreme increase in bond dimension.
+
+### What are differences from other tensor network libraries that support machine learning?
 
 A critical difference is that our library is based on Tensor Cross Interpolation (TCI). TCI allows us to compute tensor networks with a low-rank representation by exploring a tiny subset of the full tensor. This opens up the possibility of applying tensor networks to unconventional applications such as high-dimensional integration, i.e., replacing Monte Carlo integration.
 
