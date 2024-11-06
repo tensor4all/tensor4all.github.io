@@ -18,12 +18,33 @@ These tutorials should enable you to implement the most common use cases. In man
 - **C++/Python**: [Documentation](https://xfac.readthedocs.io/en/latest/intro.html)
 - **Julia**: [Documentation](https://tensor4all.org/julia.html)
 
+### How do I map a function to a tensor?
+Consider a function \(f(x_1, x_2, \ldots, \x_N)\), where each \(x_n\in [0, 1]\). To convert it to a tensor \(A_{\sigma_1, \sigma_2, \ldots, \sigma_L}\), the following two recipes are commonly used:
+1. The *natural representation*, where each \(x_n\) is discretized on a grid \(x_n(\sigma_n), \sigma_n \in \{1, \ldots, M_n\}\). This grid may or may not be uniform; for example, we use a Gauss--Kronrod grid to compute integrals.
+2. The *quantics representation*, where each \(x_n\) is discretized on a grid with \(2^R\) points, with indices \(\sigma_n^r \in \{0, 1\}\) that correspond to the bits in a binary representation of \(x_n\):
+\[
+    x_n = (0.\sigma_1^n\sigma_2^n\ldots\sigma_R^n)_2 =
+    \frac{\sigma_1^n}{2^1} + \frac{\sigma_2^n}{2^2} + \ldots + \frac{\sigma_R^n}{2^R}.
+\]
+These bits \(\sigma_r^n\) are then relabeled to \(\sigma_\ell\) in one of several patterns. In the *serial representation*, indices are grouped according to \(n\), such that \(\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_2^1, \ldots, \sigma_R = \sigma_R^1, \sigma_{R+1} = \sigma_1^2), and so on.
+In the *interleaved representation*, indices are grouped according to \(r\) instead, such that \(\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_1^2, \ldots, \sigma_N = \sigma_1^N, \sigma_{N+1} = \sigma_2^1\), and so on. Other relabeling patterns are possible.
+
+This map can have dramatic influence on the bond dimension when decomposing the resulting tensor. The optimal choice depends on the function in question. This is discussed in part in ["When is it advisable to use the quantics representation?"](#when-is-it-advisable-to-use-the-quantics-representation) and ["In the quantics representation, which index ordering is optimal?"](#in-the-quantics-representation-which-index-ordering-is-optimal).
+
+See also
+- [The introduction to quantics on tensornetwork.org](https://tensornetwork.org/functions/).
+- Khoromskij, *O(dlog N)-Quantics Approximation of N-d Tensors in High-Dimensional Numerical Modeling*, [Constr. Approx. 2, 34 (2011)](https://doi.org/10.1007/s00365-011-9131-1).
+
 ### Are all tensors/functions compressible?
 No: random noise, for example, is not compressible. The tensor train format exploits *structure* for its compression, and random noise lacks any structure that can be used for this purpose.
 More generally, the tensor train is a partial factorization of a tensor. If the tensor is a discretized function of many arguments, the tensor train is efficient if the function is close to being factorizable in its arguments. For a function in quantics representation, the tensor is factorizable if the function is factorizable in its length scales. This includes all polynomials and linear combinations of exponential functions ([Lindsey2024](https://arxiv.org/abs/2311.12554)). If multiple factorizable structures are added or multiplied in the function, the function is typically also compressible.
 
 Beyond the arguments above, our understanding of the compressibility of functions in tensor train format is still evolving and the subject of current research.
 If you are interested in a specific use case, is often easier to just try out whether some function of interest is compressible using an existing dataset. Instructions for this can be found in ["How can I test whether my data is TCI compressible?"](#how-can-i-test-whether-my-data-is-tci-compressible).
+
+See also
+- Lindsey, *Multiscale interpolative construction of quantized tensor trains*, [arXiv:2311.12554](https://arxiv.org/abs/2311.12554).
+- Khoromskij, *O(dlog N)-Quantics Approximation of N-d Tensors in High-Dimensional Numerical Modeling*, [Constr. Approx. 2, 34 (2011)](https://doi.org/10.1007/s00365-011-9131-1).
 
 ### How can I test whether my data is TCI compressible?
 Using our libraries, it is easy to try whether some function or dataset of interest is compressible. [The tutorial on compressing existing data](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/compress.html) demonstrates how to do this for TCI and quantics TCI. Replace the tutorial dataset with your own and set the tolerance to whatever precision you require. Note that the tolerance has to be set well above the noise level in your dataset to get an accurate idea about the compressibility of your dataset. Otherwise, TCI will try to compress your random noise, which may lead to an extreme increase in bond dimension.
@@ -43,7 +64,12 @@ The elements where a row and column cross (purple) are called  *pivots*. Since t
 
 CI has the important advantage that all components of the resulting factorization are components of the original matrix. This means that the tensor generalization, TCI, can be constructed and optimized using small slices of the original tensor, and an explicit representation of the full tensor is not required.
 
-TCI is explained in detail in [NunezFernandez2024](https://arxiv.org/abs/2407.02454).
+TCI as implemented in the tensor4all libraries is explained in detail in [NunezFernandez2024](https://arxiv.org/abs/2407.02454).
+
+See also:
+- Oseledets and Tyrtyshnikov, *TT-cross approximation for multidimensional arrays*, [Linear Algebra Appl. 432 (1), 70-88](https://www.sciencedirect.com/science/article/pii/S0024379509003747) (2010).
+- Núñez Fernández, Jeannin, Dumitrescu, Kloss, Kaye, Parcollet, and Waintal, *Learning Feynman Diagrams with Tensor Trains*, [Phys. Rev. X 12, 041018](https://link.aps.org/doi/10.1103/PhysRevX.12.041018) (2022), [arXiv:2207.06135](https://arxiv.org/abs/2207.06135).
+- Núñez Fernández, Ritter, Jeannin, Li, Kloss, Louvet, Terasaki, Parcollet, von Delft, Shinaoka, Waintal, *Learning Tensor Networks with Tensor Cross Interpolation: New Algorithms and Libraries*, [arXiv:2407.02454](http://arxiv.org/abs/2407.02454).
 
 ### What is a "pivot" in the context of TCI?
 Roughly, an element of the original tensor that is included in the tensor train approximation. If the pivot was chosen by TCI, it is an element of the original tensor that contributes important information; see also ["How does Tensor Cross Interpolation (TCI) work?"](#how-does-tensor-cross-interpolation-tci-work).
@@ -69,7 +95,7 @@ This is a typical symptom of the limitation described in ["What are the limitati
 ### When is it advisable to use the quantics representation?
 In the quantics representation, the tensor indices correspond to bits of the function arguments instead of function arguments themselves. This leads to exponential resolution for linear number of bits. Generally, the quantics representation is useful if a function has few arguments, but high resolution is required in each argument, whilst the natural representation is more useful if a function has many arguments, but only coarse resolution is required.
 
-Of course, this hinges on whether the resulting tensor is factorizable in its indices. In the natural representation, factorizing the tensor means factorizing dependencies on different arguments of the function. In the quantics representation, factorizing the tensor means factorizing the different length scales of the function. Therefore, small bond dimension in one representation does *not* imply small bond dimension in the other.
+Of course, this depends on whether the resulting tensor is factorizable in its indices. In the natural representation, factorizing the tensor means factorizing dependencies on different arguments of the function. In the quantics representation, factorizing the tensor means factorizing the different length scales of the function. Therefore, small bond dimension in one representation does *not* imply small bond dimension in the other.
 
 ### In the quantics representation, which index ordering is optimal?
 This depends entirely on the function to be factorized. Generally, the bond dimension will grow with the distance along the chain that information has to be transferred. Different index orderings can lead to vastly different bond dimensions.
@@ -78,7 +104,9 @@ Some rules of thumb:
 - If the function can be factorized both between different arguments and between different length scales, use the interleaved representation.
 - If the function is more factorizable between different arguments than between length scales, use the serial representation, or similar.
 
-This is another point where it is worth trying different factorizations on some test dataset that contains a typical case.
+This is another point where it is worth trying different factorizations on some test dataset that contains a typical case. For example, the paper below compares different index ordering schemes for solving the Vlasov-Poisson equations.
+
+- Ye and Loureiro, *Quantum-inspired method for solving the Vlasov-Poisson equations*, [Phys. Rev. E 3, 106](https://doi.org/10.1103/PhysRevE.106.035208) (2022). ([arXiv:2205.11990](https://arxiv.org/abs/2205.11990))
 
 ### Can tensor trains generated with tensor4all tools be manipulated using other tensor libraries such as iTensor?
 For the julia version of our libraries, we have implemented a small helper library called [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl). It allows convenient bidirectional conversion between our TCI/TT objects and iTensor MPS/MPO objects through the constructor:
