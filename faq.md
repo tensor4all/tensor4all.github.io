@@ -10,13 +10,13 @@
 ### How do I get started?
 We have an extensive set of online tutorials that teach you how to use our libraries, for both the Julia and C++/Python version of our library.
 
-- **Julia**: Tutorials are available [online](https://tensor4all.org/juliatutorials/index.html) and can be run in your web browser. If you wish to run notebooks locally on your computer, install julia using the [installation instructions](https://tensor4all.org/juliatutorials/index.html#install-julia), then copy-paste the instructions at the top of each online notebook to download and run that specific notebook.
 - **C++/Python**: Install the library using the [installation instructions](https://github.com/tensor4all/xfac/blob/main/README.md#installation), then follow the [tutorial pages](https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html).
+- **Julia**: Tutorials are available [online](https://tensor4all.org/juliatutorials/index.html) and can be run in your web browser. If you wish to run notebooks locally on your computer, install julia using the [installation instructions](https://tensor4all.org/juliatutorials/index.html#install-julia), then copy-paste the instructions at the top of each online notebook to download and run that specific notebook.
 
 These tutorials should enable you to implement the most common use cases. In many cases, it is sufficient to copy-paste and slightly modify some tutorial code. For more advanced use cases, it may be useful to look at the code in appendix B of our publication [NunezFernandez2024](http://arxiv.org/abs/2407.02454), and to consult the documentation:
 
-- **Julia**: [Documentation](https://tensor4all.org/julia.html)
 - **C++/Python**: [Documentation](https://xfac.readthedocs.io/en/latest/intro.html)
+- **Julia**: [Documentation](https://tensor4all.org/julia.html)
 
 ### Are all tensors/functions compressible?
 No: random noise, for example, is not compressible. The tensor train format exploits *structure* for its compression, and random noise lacks any structure that can be used for this purpose.
@@ -60,8 +60,8 @@ A critical difference is that our library is based on Tensor Cross Interpolation
 As explained [above](#what-is-the-relation-between-tensor-cross-interpolation-tci-and-machine-learning), TCI is a machine learning algorithm that only samples a small subset of tensor components to learn the whole tensor. This leads to an inherent limitation: The fact that all samples seen by the algorithm match some learned structure does not ensure that this structure extends to all other components of the tensor; nor does it imply that no additional structure is present in the components not sampled so far. This limitation cannot, in principle, be avoided by sampling algorithms.
 
 This limitation implies that one has to be careful when applying TCI to tensors or functions that have several disconnected "interesting regions" (with lots of structure) that are separated by "boring regions" (with trivial structure). Since 2-site TCI optimizes pairs of neighbouring tensors, two interesting regions are connected if they can be reached by updating a pair neighbouring indices. If your function of interest has several disconnected interesting regions, it may happen that only the region that contains the [intial pivot](#how-does-tensor-cross-interpolation-tci-work) is approximated correctly, and the algorithm never samples the disconnected structure. Such cases can be fixed by specifying at least one initial pivot in each region, as described in the documentation:
-- **Julia**: [Use the argument `initialpivots` of `crossinterpolate2`.](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.crossinterpolate2-Union{Tuple{N},%20Tuple{ValueType},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}}},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}},%20Vector{Vector{Int64}}}}%20where%20{ValueType,%20N})
 - **C++/Python**: [Set the value of `pivot1` in the `TensorCI2Param` struct.](https://xfac.readthedocs.io/en/latest/api/api1.html#_CPPv4N4xfac14TensorCI2ParamE)
+- **Julia**: [Use the argument `initialpivots` of `crossinterpolate2`.](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.crossinterpolate2-Union{Tuple{N},%20Tuple{ValueType},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}}},%20Tuple{Type{ValueType},%20Any,%20Union{NTuple{N,%20Int64},%20Vector{Int64}},%20Vector{Vector{Int64}}}}%20where%20{ValueType,%20N})
 
 ### My function / tensor is approximated well in one region, but not in another region. Why?
 This is a typical symptom of the limitation described in ["What are the limitations of your Tensor Cross Interpolation (TCI) algorithms? When do they fail?"](#what-are-the-limitations-of-your-tensor-cross-interpolation-tci-algorithms-when-do-they-fail). The answer also describes how to solve this problem.
@@ -79,43 +79,6 @@ Some rules of thumb:
 - If the function is more factorizable between different arguments than between length scales, use the serial representation, or similar.
 
 This is another point where it is worth trying different factorizations on some test dataset that contains a typical case.
-
-### What manipulations are possible for MPS generated externally?
-The table below is an overview over operations implemented in our library that can be applied to existing MPS / tensor trains.
-
-| operation | Julia | C++ | Section in [NunezFernandez2024](http://arxiv.org/abs/2407.02454) |
-|-|-|-|-|
-| CI-canonical form | `makecanonical!` |  | 4.5 |
-| recompression | [`compress!`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.compress!-Union{Tuple{TensorTrain{V,%20N}},%20Tuple{N},%20Tuple{V},%20Tuple{TensorTrain{V,%20N},%20Symbol}}%20where%20{V,%20N}) | | 4.5 |
-| 2-site optimization, reset mode | [`optimize!`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.optimize!-Union{Tuple{ValueType},%20Tuple{TensorCrossInterpolation.TensorCI2{ValueType},%20Any}}%20where%20ValueType) | | 4.3.3 |
-| global pivot | [`addglobalpivots!`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.addglobalpivots!-Union{Tuple{ValueType},%20Tuple{TensorCrossInterpolation.TensorCI2{ValueType},%20Vector{Vector{Int64}}}}%20where%20ValueType) | | 4.3.5 |
-| multiplication by constant | `multiply!`, `*` | | |
-| addition | [`add`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.add-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`+`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:+-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V) | | 4.7 |
-| subtraction | [`subtract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.subtract-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`-`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:--Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V) | | 4.7 |
-| contraction | [`contract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.contract-Union{Tuple{V2},%20Tuple{V1},%20Tuple{TensorTrain{V1,%204},%20TensorTrain{V2,%204}}}%20where%20{V1,%20V2}) | | 4.7 | 
-
-All algorithms are described in detail in our publication [NunezFernandez2024](http://arxiv.org/abs/2407.02454). The numbers in the last column of the table correspond to section numbers in the publication.
-
-### What manipulations are possible for functions expressed in tensor train format?
-In the natural representation, the correspondence is straightforward:
-
-| operation on function | operation on the tensor train | Julia | C++ | Section in [NunezFernandez2024](http://arxiv.org/abs/2407.02454) |
-|-|-|-|-|-|
-| addition, subtraction | addition, subtraction | [`add`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.add-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`+`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:+-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`subtract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.subtract-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`-`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:--Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V) | | 4.7 |
-| multiplication by constant | multiplication of one tensor of the train by a constant | `multiply!`, `*` |
-| sum | factorized sum over indices | [`sum`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.sum-Union{Tuple{TensorCrossInterpolation.AbstractTensorTrain{V}},%20Tuple{V}}%20where%20V) | | 5.1 |
-| Riemann integral | factorized sum over indices, multiplication with integration element | [`sum`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.sum-Union{Tuple{TensorCrossInterpolation.AbstractTensorTrain{V}},%20Tuple{V}}%20where%20V) | | 5.1 |
-| Gauss--Kronrod (GK) quadrature | factorized sum over indices corresponding to GK nodes, weighted factorized sum | [`integrate`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.integrate-Union{Tuple{ValueType},%20Tuple{Type{ValueType},%20Any,%20Vector{ValueType},%20Vector{ValueType}}}%20where%20ValueType) | | 5.1|
-
-In quantics representation, the correspondence is as follows:
-| operation on function | operation on the quantics tensor train | Julia | C++ | Section in [NunezFernandez2024](http://arxiv.org/abs/2407.02454) |
-|-|-|-|-|-|
-| addition, subtraction | addition, subtraction | [`add`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.add-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`+`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:+-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`subtract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.subtract-Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V), [`-`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.:--Union{Tuple{V},%20Tuple{TensorCrossInterpolation.AbstractTensorTrain{V},%20TensorCrossInterpolation.AbstractTensorTrain{V}}}%20where%20V) | | 4.7 |
-| multiplication by constant | multiplication of one tensor of the train by a constant | `multiply!`, `*` |
-| sum | factorized sum over indices | [`sum`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.sum-Union{Tuple{TensorCrossInterpolation.AbstractTensorTrain{V}},%20Tuple{V}}%20where%20V) | | 5.1 |
-| Riemann integral | factorized sum over indices, multiplication with integration element | [`sum`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#Base.sum-Union{Tuple{TensorCrossInterpolation.AbstractTensorTrain{V}},%20Tuple{V}}%20where%20V) | | 6.2 |
-| Matrix product or integral transform | MPO-MPO contraction (in fused representation) | [`contract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.contract-Union{Tuple{V2},%20Tuple{V1},%20Tuple{TensorTrain{V1,%204},%20TensorTrain{V2,%204}}}%20where%20{V1,%20V2}) | | 6.2 |
-| Fourier transform | Apply fourier transform MPO to QTT | [`quanticsfouriermpo`](https://tensor4all.org/QuanticsTCI.jl/dev/apireference/#QuanticsTCI.quanticsfouriermpo-Tuple{Int64}) and [`contract`](https://tensor4all.org/TensorCrossInterpolation.jl/dev/documentation/#TensorCrossInterpolation.contract-Union{Tuple{V2},%20Tuple{V1},%20Tuple{TensorTrain{V1,%204},%20TensorTrain{V2,%204}}}%20where%20{V1,%20V2}); see [this tutorial](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/qft.html) | | 6.2, A.5 |
 
 ### Can tensor trains generated with tensor4all tools be manipulated using other tensor libraries such as iTensor?
 For the julia version of our libraries, we have implemented a small helper library called [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl). It allows convenient bidirectional conversion between our TCI/TT objects and iTensor MPS/MPO objects through the constructor:
