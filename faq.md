@@ -116,8 +116,8 @@ This is another point where it is worth trying different factorizations on some 
 
 - Ye and Loureiro, *Quantum-inspired method for solving the Vlasov-Poisson equations*, [Phys. Rev. E 3, 106](https://doi.org/10.1103/PhysRevE.106.035208) (2022). ([arXiv:2205.11990](https://arxiv.org/abs/2205.11990))
 
-### Can tensor trains generated with tensor4all tools be manipulated using other tensor libraries such as iTensor?
-For the julia version of our libraries, we have implemented a small helper library called [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl). It allows convenient bidirectional conversion between our TCI/TT objects and iTensor MPS/MPO objects through the constructor:
+### Can tensor trains generated with tensor4all tools be manipulated using other tensor libraries such as ITensor?
+For the julia version of our libraries, we have implemented a small helper library called [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl). It allows convenient bidirectional conversion between our TCI/TT objects and ITensor MPS/MPO objects through the constructor:
 ```julia
 tt = TCI.TensorTrain(#=something=#)
 mpo = ITensors.MPO(tt)
