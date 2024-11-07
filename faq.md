@@ -1,4 +1,6 @@
-# Frequently Asked Questions
+---
+title: Frequently Asked Questions
+---
 
 <!-- - [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1) -->
 
@@ -19,15 +21,19 @@ These tutorials should enable you to implement the most common use cases. In man
 - **Julia**: [Documentation](https://tensor4all.org/julia.html)
 
 ### How do I map a function to a tensor?
-Consider a function \(f(x_1, x_2, \ldots, \x_N)\), where each \(x_n\in [0, 1]\). To convert it to a tensor \(A_{\sigma_1, \sigma_2, \ldots, \sigma_L}\), the following two recipes are commonly used:
-1. The *natural representation*, where each \(x_n\) is discretized on a grid \(x_n(\sigma_n), \sigma_n \in \{1, \ldots, M_n\}\). This grid may or may not be uniform; for example, we use a Gauss--Kronrod grid to compute integrals.
-2. The *quantics representation*, where each \(x_n\) is discretized on a grid with \(2^R\) points, with indices \(\sigma_n^r \in \{0, 1\}\) that correspond to the bits in a binary representation of \(x_n\):
-\[
+Consider a function $f(x_1, x_2, \ldots, x_N)$, where each $x_n\in [0, 1]$. To convert it to a tensor $A_{\sigma_1, \sigma_2, \ldots, \sigma_L}$, the following two recipes are commonly used:
+
+The *natural representation*, where each $x_n$ is discretized on a grid $x_n(\sigma_n), \sigma_n \in \{1, \ldots, M_n\}$. This grid may or may not be uniform; for example, we use a Gauss--Kronrod grid to compute integrals.
+
+The *quantics representation*, where each $x_n$ is discretized on a grid with $2^R$ points, with indices $\sigma_n^r \in \{0, 1\}$ that correspond to the bits in a binary representation of $x_n$:
+
+$$
     x_n = (0.\sigma_1^n\sigma_2^n\ldots\sigma_R^n)_2 =
     \frac{\sigma_1^n}{2^1} + \frac{\sigma_2^n}{2^2} + \ldots + \frac{\sigma_R^n}{2^R}.
-\]
-These bits \(\sigma_r^n\) are then relabeled to \(\sigma_\ell\) in one of several patterns. In the *serial representation*, indices are grouped according to \(n\), such that \(\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_2^1, \ldots, \sigma_R = \sigma_R^1, \sigma_{R+1} = \sigma_1^2), and so on.
-In the *interleaved representation*, indices are grouped according to \(r\) instead, such that \(\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_1^2, \ldots, \sigma_N = \sigma_1^N, \sigma_{N+1} = \sigma_2^1\), and so on. Other relabeling patterns are possible.
+$$
+
+These bits $\sigma_r^n$ are then relabeled to $\sigma_\ell$ in one of several patterns. In the *serial representation*, indices are grouped according to $n$, such that $\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_2^1, \ldots, \sigma_R = \sigma_R^1, \sigma_{R+1} = \sigma_1^2), and so on.
+In the *interleaved representation*, indices are grouped according to $r$ instead, such that $\sigma_1 = \sigma_1^1, \sigma_2 = \sigma_1^2, \ldots, \sigma_N = \sigma_1^N, \sigma_{N+1} = \sigma_2^1$, and so on. Other relabeling patterns are possible.
 
 This map can have dramatic influence on the bond dimension when decomposing the resulting tensor. The optimal choice depends on the function in question. This is discussed in part in ["When is it advisable to use the quantics representation?"](#when-is-it-advisable-to-use-the-quantics-representation) and ["In the quantics representation, which index ordering is optimal?"](#in-the-quantics-representation-which-index-ordering-is-optimal).
 
