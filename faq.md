@@ -1,9 +1,11 @@
 ---
 title: Frequently Asked Questions
 ---
+{:.no_toc}
+# Frequently asked questions
 
-<!-- - [Q1: What are differences from other tensor network libraries supporting machine learning?](#q1) -->
-
+{:.no_toc}
+### Contents
 1. placeholder
 {:toc}
 
