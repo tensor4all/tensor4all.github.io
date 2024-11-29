@@ -2,7 +2,7 @@
 
 ## Steps to view/run the tutorials
 
-You can view [our notebook page](https://tensor4all.org/T4APlutoExamples/pluto_notebooks/) by a web browser.
+You can view [our notebook page](https://tensor4all.org/T4APlutoExamples/) by a web browser.
 
 If you want to run the notebooks interactively,
 please install `Julia` following the [instructions](#install-julia).
