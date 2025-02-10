@@ -4,10 +4,20 @@ We provide a list of references to the literature related to tensor cross interp
 
 *Please feel to contact us if you would like to add a relevant paper to this list or make a pull request [here](https://github.com/tensor4all/tensor4all.github.io).*
 
+* *Tensor cross interpolation approach for quantum impurity problems based on the weak-coupling expansion*<br>
+Shuta Matsuura, Hiroshi Shinaoka, Philipp Werner, Naoto Tsuji<br>
+[arXiv:2501.12643](https://arxiv.org/abs/2501.12643)<br>
+We apply the tensor cross interpolation (TCI) algorithm to solve equilibrium quantum impurity problems with high precision based on the weak-coupling expansion. The TCI algorithm enables efficient evaluation of higher-order terms in perturbative expansions by factorizing high-dimensional integrals into low-dimensional ones.
+
+* *High-resolution nonequilibrium GW calculations based on quantics tensor trains*<br>
+Maksymilian Środa, Ken Inayoshi, Hiroshi Shinaoka, Philipp Werner<br>
+[arXiv:2412.14032](https://arxiv.org/abs/2412.14032)<br>
+This paper demonstrates nonequilibrium GW simulations with high momentum resolution using quantics tensor train (QTT) representation, enabling the study of thermalization dynamics and transient Floquet physics during multi-cycle electric field pulses.
+
 * *Learning low-rank tensor train representations: new algorithms and libraries*<br>
 Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
 [arXiv:2407.02454](https://arxiv.org/abs/2407.02454)<br>
-This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithm.
+This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithms.
 
 * *Learning parameter dependence for Fourier-based option pricing with tensor trains*<br>
 Rihito Sakurai, Haruto Takahashi, Koichi Miyamoto<br>
@@ -45,7 +55,6 @@ Marc K. Ritter, Yuriel Núñez Fernández, Markus Wallerberger, Jan von Delft, H
 [Phys. Rev. Lett. 132, 056501 (2024)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.056501)<br>
 [arXiv:2303.11819](https://arxiv.org/abs/2303.11819)<br>
 This paper introduces quantics tensor cross interpolation (QTCI) for high-resolution parsimonious representations of multivariate functions.
-
 
 * *Multiscale Space-Time Ansatz for Correlation Functions of Quantum Systems Based on Quantics Tensor Trains*<br>
 Hiroshi Shinaoka, Markus Wallerberger, Yuta Murakami, Kosuke Nogaki, Rihito Sakurai, Philipp Werner, and Anna Kauch<br>
