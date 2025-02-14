@@ -45,6 +45,9 @@ Previous meetings:
 
 We organize [workshops](workshop/index.html) to discuss the development of new methods.
 
+## Lectures
+We have a [lectures](lecture/index.html) page to share lectures on TCI and related tensor learning algorithms.
+
 ## People
 
 Check the [about](about.html) page to see who is involved in the tensor4all collaboration.
