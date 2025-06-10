@@ -26,10 +26,13 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list (49 registered users as of November 4th, 2024). Please contact [us](<mailto:tensor4all-admin@googlegroups.com>) if you would like to join the mailing list.
 
 Planned meetings:
-* February 18th, 2025
 
 Previous meetings:
 
+* June 6th, 2025
+* May 6th, 2025
+* March 1st, 2025
+* February 18th, 2025
 * January 13th, 2025
 * November 26th, 2024
 * October 29th, 2024
