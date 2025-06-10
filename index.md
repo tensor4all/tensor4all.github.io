@@ -40,11 +40,11 @@ Planned meetings:
 
 Previous meetings:
 
-* June 6th, 2025
+* June 6th, 2025 (talk by Dr. Maksymilian Środa)
 * May 6th, 2025
 * March 1st, 2025
 * February 18th, 2025
-* January 13th, 2025
+* January 13th, 2025 (talk by Prof. Yuehaw Khoo)
 * November 26th, 2024
 * October 29th, 2024
 * September 30th, 2024
