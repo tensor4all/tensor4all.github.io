@@ -12,7 +12,7 @@ International workshop on tensor cross interpolation and other algorithms for le
 * 📝 Registration is free but subject to approval (We only have only 50 available slots in total).
 * 👤 Call for oral presentations and poster is open.
 
-If you want to register, you need to create an account on scienceconf.org and register by following the steps on https://tensornetworks.sciencesconf.org.
+If you want to register, you need to create an account on scienceconf.org and register by following the steps on [https://tensornetworks.sciencesconf.org](https://tensornetworks.sciencesconf.org).
 
 ## Literature
 
