@@ -4,8 +4,18 @@ This website collects information from the tensor4all group which is working on 
 
 ## News
 
-The [tensor4all discourse forum](https://tensor4all.discourse.group) is open!
-Please feel free to ask questions and discuss your ideas with us.
+<div style="background-color: #e8f4fd; border: 2px solid #2196F3; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <h3 style="color: #1976D2; margin-top: 0; font-size: 1.4em;">🎉 New Forum Available!</h3>
+  <p style="font-size: 1.2em; margin: 10px 0; font-weight: 500;">
+    The <a href="https://tensor4all.discourse.group" style="color: #1976D2; text-decoration: none; font-weight: bold;">tensor4all discourse forum</a> is now open!
+  </p>
+  <p style="margin: 10px 0; color: #424242;">
+    Please feel free to ask questions and discuss your ideas with us.
+  </p>
+  <a href="https://tensor4all.discourse.group" style="display: inline-block; background-color: #2196F3; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 10px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#1976D2'" onmouseout="this.style.backgroundColor='#2196F3'">
+    Join the Discussion →
+  </a>
+</div>
 
 ## Literature
 
