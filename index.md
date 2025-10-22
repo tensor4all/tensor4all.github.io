@@ -4,15 +4,8 @@ This website collects information from the tensor4all group which is working on 
 
 ## News
 
-The House of Quantum Alps, the University of Saitama and the University of Munich LMU co-organize an
-International workshop on tensor cross interpolation and other algorithms for learning tensor networks.
-
-* 📅 From October 6th to October 10th, 2025
-* 📍 Y Spot Partners, Grenoble, France
-* 📝 Registration is free but subject to approval (We only have only 50 available slots in total).
-* 👤 Call for oral presentations and poster is open.
-
-If you want to register, you need to create an account on scienceconf.org and register by following the steps on [https://tensornetworks.sciencesconf.org](https://tensornetworks.sciencesconf.org).
+The [tensor4all discourse forum](https://tensor4all.discourse.group) is open!
+Please feel free to ask questions and discuss your ideas with us.
 
 ## Literature
 
