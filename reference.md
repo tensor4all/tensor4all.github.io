@@ -6,16 +6,19 @@ We provide a list of references to the literature related to tensor cross interp
 
 * *Tensor cross interpolation approach for quantum impurity problems based on the weak-coupling expansion*<br>
 Shuta Matsuura, Hiroshi Shinaoka, Philipp Werner, Naoto Tsuji<br>
+[Phys. Rev. B 111, 155150 (2025)](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.111.155150)<br>
 [arXiv:2501.12643](https://arxiv.org/abs/2501.12643)<br>
 We apply the tensor cross interpolation (TCI) algorithm to solve equilibrium quantum impurity problems with high precision based on the weak-coupling expansion. The TCI algorithm enables efficient evaluation of higher-order terms in perturbative expansions by factorizing high-dimensional integrals into low-dimensional ones.
 
-* *High-resolution nonequilibrium GW calculations based on quantics tensor trains*<br>
+* *Memory-Efficient Nonequilibrium Green's Function Framework Built On Quantics Tensor Trains*<br>
 Maksymilian Środa, Ken Inayoshi, Hiroshi Shinaoka, Philipp Werner<br>
+[Phys. Rev. Lett. 135, 226501 (2025)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.135.226501)<br>
 [arXiv:2412.14032](https://arxiv.org/abs/2412.14032)<br>
 This paper demonstrates nonequilibrium GW simulations with high momentum resolution using quantics tensor train (QTT) representation, enabling the study of thermalization dynamics and transient Floquet physics during multi-cycle electric field pulses.
 
-* *Learning low-rank tensor train representations: new algorithms and libraries*<br>
-Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal<br>
+* *Learning tensor networks with tensor cross interpolation: New algorithms and libraries*<br>
+Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, Xavier Waintal<br>
+[SciPost Phys. 18, 104 (2025)](https://www.scipost.org/SciPostPhys.18.3.104) · published 20 March 2025<br>
 [arXiv:2407.02454](https://arxiv.org/abs/2407.02454)<br>
 This paper provides a pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithms.
 

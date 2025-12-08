@@ -10,7 +10,7 @@ This website collects information from the tensor4all group which is working on 
     The <a href="https://tensor4all.discourse.group" style="color: #1976D2; text-decoration: none; font-weight: bold;">tensor4all discourse forum</a> is now open!
   </p>
   <p style="margin: 10px 0; color: #424242;">
-    Please feel free to ask questions and discuss your ideas with us.
+Please feel free to ask questions and discuss your ideas with us.
   </p>
   <a href="https://tensor4all.discourse.group" style="display: inline-block; background-color: #2196F3; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 10px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#1976D2'" onmouseout="this.style.backgroundColor='#2196F3'">
     Join the Discussion →
@@ -21,7 +21,7 @@ This website collects information from the tensor4all group which is working on 
 
 A pedagogical introduction to tensor network methods, which includes an overview of the existing literature and also new algorithms, can be found in:
 
-> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, and Xavier Waintal, "Learning tensor networks with tensor cross interpolation: new algorithms and libraries", [arXiv:2407.02454](https://arxiv.org/abs/2407.02454).
+> Yuriel Núñez Fernández, Marc K. Ritter, Matthieu Jeannin, Jheng-Wei Li, Thomas Kloss, Thibaud Louvet, Satoshi Terasaki, Olivier Parcollet, Jan von Delft, Hiroshi Shinaoka, Xavier Waintal, "Learning tensor networks with tensor cross interpolation: New algorithms and libraries", [SciPost Phys. 18, 104 (2025)](https://www.scipost.org/SciPostPhys.18.3.104) · published 20 March 2025, [arXiv:2407.02454](https://arxiv.org/abs/2407.02454).
 
 Please check the [reference](reference.html) page for more information on TCI and quantics tensor trains.
 
