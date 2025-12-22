@@ -41,6 +41,8 @@ We have a monthly online meeting to discuss the development of new methods and a
 
 Planned meetings:
 
+* January 20th, 2025 (talk: Prof. Engin Danis, "Tensor-Train Finite Difference Method for Compressible Flows", 8:00 AM ET / 14:00 CET / 22:00 JST) - [Details](https://tensor4all.discourse.group/t/online-by-prof-engin-danis-tensor-train-finite-difference-method-for-compressible-flows-january-20th/21)
+
 Previous meetings:
 
 * July 8th, 2025 (talk: Leonhard Hoelscher)
