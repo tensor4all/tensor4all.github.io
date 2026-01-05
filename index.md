@@ -42,7 +42,7 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 
 <a id="onlinemeeting"></a>
 ## Monthly online meeting
-We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list (49 registered users as of November 4th, 2024). Please contact [us](<mailto:tensor4all-admin@googlegroups.com>) if you would like to join the mailing list.
+We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list (92 registered users as of January 5th, 2026). Please contact [us](<mailto:tensor4all-admin@googlegroups.com>) if you would like to join the mailing list.
 
 Planned meetings:
 
