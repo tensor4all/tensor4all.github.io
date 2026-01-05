@@ -20,6 +20,9 @@ This website collects information from the tensor4all group which is working on 
       Join Mailing List →
     </a>
   </div>
+  <p style="font-size: 0.85em; margin: 15px 0 0 0; color: #666; font-style: italic;">
+    New topics in the Discourse forum are automatically notified via the mailing list. We recommend joining both for convenience.
+  </p>
 </div>
 
 ## Literature
