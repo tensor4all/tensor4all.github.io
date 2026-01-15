@@ -18,10 +18,10 @@ Matrix is an open protocol for real-time communication. Element is a popular cli
 ## Getting Started
 
 See for Matrix/Element:
-https://zenn.dev/h_shinaoka/articles/e0bd698420688e
+[https://zenn.dev/h_shinaoka/articles/e0bd698420688e](https://zenn.dev/h_shinaoka/articles/e0bd698420688e)
 
 After setting up the Element client app (or your favorite client),
 we can follow the link to join the space or search for the tensor4all space:
-https://matrix.to/#/#tensor4all:matrix.org
+[https://matrix.to/#/#tensor4all:matrix.org](https://matrix.to/#/#tensor4all:matrix.org)
 
 Best wishes,
