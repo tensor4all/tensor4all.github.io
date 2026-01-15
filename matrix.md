@@ -23,5 +23,3 @@ See for Matrix/Element:
 After setting up the Element client app (or your favorite client),
 we can follow the link to join the space or search for the tensor4all space:
 [https://matrix.to/#/#tensor4all:matrix.org](https://matrix.to/#/#tensor4all:matrix.org)
-
-Best wishes,
