@@ -7,7 +7,7 @@ This website collects information from the tensor4all group which is working on 
 <div style="background-color: #e8f4fd; border: 2px solid #2196F3; border-radius: 8px; padding: 20px; margin: 20px 0; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
   <h3 style="color: #1976D2; margin-top: 0; font-size: 1.4em;">🤝 Join our community!</h3>
   <p style="font-size: 1.1em; margin: 15px 0; color: #424242;">
-    Connect with researchers working on tensor networks and related methods. Join our <a href="https://tensor4all.discourse.group" style="color: #1976D2; text-decoration: none; font-weight: bold;">Discourse forum</a> for discussions, or subscribe to our <a href="https://groups.google.com/g/tensor4all" style="color: #1976D2; text-decoration: none; font-weight: bold;">Google Groups mailing list</a> for meeting announcements.
+    Connect with researchers working on tensor networks and related methods. Join our <a href="https://tensor4all.discourse.group" style="color: #1976D2; text-decoration: none; font-weight: bold;">Discourse forum</a> for discussions, subscribe to our <a href="https://groups.google.com/g/tensor4all" style="color: #1976D2; text-decoration: none; font-weight: bold;">Google Groups mailing list</a> for meeting announcements, or join our <a href="matrix.html" style="color: #1976D2; text-decoration: none; font-weight: bold;">Matrix space (chat)</a> for real-time chat.
   </p>
   <p style="font-size: 0.9em; margin: 10px 0; color: #666;">
     Don't have a Google account? Contact us at <a href="mailto:tensor4all-admin@googlegroups.com" style="color: #1976D2; text-decoration: none;">tensor4all-admin@googlegroups.com</a> to join the mailing list.
@@ -18,6 +18,9 @@ This website collects information from the tensor4all group which is working on 
     </a>
     <a href="https://groups.google.com/g/tensor4all" style="display: inline-block; background-color: white; color: #2196F3; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; border: 2px solid #2196F3; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#e8f4fd'" onmouseout="this.style.backgroundColor='white'">
       Join Mailing List →
+    </a>
+    <a href="matrix.html" style="display: inline-block; background-color: white; color: #2196F3; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; border: 2px solid #2196F3; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#e8f4fd'" onmouseout="this.style.backgroundColor='white'">
+      Join Matrix Space (chat) →
     </a>
   </div>
   <p style="font-size: 0.85em; margin: 15px 0 0 0; color: #666; font-style: italic;">
