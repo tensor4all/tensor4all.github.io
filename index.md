@@ -50,6 +50,8 @@ One code is called Xfac (written in C++ with Python bindings), and a second impl
 ## Monthly online meeting
 We have a monthly online meeting to discuss the development of new methods and applications. Zoom links will be provided through a mailing list (92 registered users as of January 5th, 2026). Please contact [us](<mailto:tensor4all-admin@googlegroups.com>) if you would like to join the mailing list.
 
+Please also check the [Discourse forum](https://tensor4all.discourse.group/c/events/7) for the latest announcements and discussions.
+
 Planned meetings:
 
 * January 20th, 2025 (talk: Prof. Engin Danis, "Tensor-Train Finite Difference Method for Compressible Flows", 8:00 AM ET / 14:00 CET / 22:00 JST) - [Details](https://tensor4all.discourse.group/t/online-by-prof-engin-danis-tensor-train-finite-difference-method-for-compressible-flows-january-20th/21)
