@@ -54,10 +54,14 @@ Please also check the [Discourse forum](https://tensor4all.discourse.group/c/eve
 
 Planned meetings:
 
-* January 20th, 2025 (talk: Prof. Engin Danis, "Tensor-Train Finite Difference Method for Compressible Flows", 8:00 AM ET / 14:00 CET / 22:00 JST) - [Details](https://tensor4all.discourse.group/t/online-by-prof-engin-danis-tensor-train-finite-difference-method-for-compressible-flows-january-20th/21)
+* May 19th, 2026 (Developer meeting)
 
 Previous meetings:
 
+* April 14th, 2026 (Developer meeting)
+* March 17th, 2026 (Developer meeting)
+* February 10th, 2026 (Developer meeting)
+* January 20th, 2026 (talk: Prof. Engin Danis, "Tensor-Train Finite Difference Method for Compressible Flows", 8:00 AM ET / 14:00 CET / 22:00 JST) - [Details](https://tensor4all.discourse.group/t/online-by-prof-engin-danis-tensor-train-finite-difference-method-for-compressible-flows-january-20th/21)
 * July 8th, 2025 (talk: Leonhard Hoelscher)
 * June 6th, 2025 (talk: Maksymilian Środa)
 * May 6th, 2025
