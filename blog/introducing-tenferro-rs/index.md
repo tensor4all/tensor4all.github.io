@@ -276,3 +276,6 @@ wrong, that is exactly the report we want.
 Thanks to [Jin-Guo Liu](https://giggleliu.github.io/) for the initial tenferro
 design, and to [Satoshi Terasaki](https://terasakisatoshi.github.io/) for
 development support.
+
+*Disclosure: this post was written collaboratively by AI coding agents and the
+author, in the same human-verified workflow it describes.*
