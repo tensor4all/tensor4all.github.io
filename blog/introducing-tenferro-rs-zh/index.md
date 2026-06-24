@@ -14,36 +14,45 @@ title: 介绍 tenferro-rs
 
 ---
 
-张量网络代码大多用 Julia 写，我们的也不例外。ITensors 及其周边生态适合原型开发，因为代码贴近数学表达，迭代起来快。我们自己的 IR 基、稀疏建模，以及 [tensor4all](https://tensor4all.org) 的张量交叉插值（TCI）／quantics 栈，也是在那里成长起来的。
+张量网络代码过去常用 Julia 写，我们也一样。ITensors 及其周边生态很适合做原型：代码可以贴近数学表达，试错也快。我们自己的 IR 基、稀疏建模，以及 [tensor4all](https://tensor4all.org) 的张量交叉插值（TCI）／quantics 栈，最早也是在 Julia 中开发的。
 
-但代码库变大后，Julia 开发会以一些难以忽视的方式变得痛苦：只在运行时才暴露的类型不稳定、拉长「编辑—测试」循环的编译／预编译时间，以及代码越长越难把正确性钉死的隐忧。在把张量网络栈移植到更大系统的过程中，这些问题变得无法忍受，于是我们开始把引擎迁移到 Rust。
+不过，代码库变大以后，Julia 开发会逐渐变重。类型不稳定往往到运行时才出现，编译和预编译会拉长编辑与测试的往返时间，代码越多，也越难确认它是否真的正确。把张量网络栈嵌入更大的系统时，这些问题已经不能再忽略。于是我们开始把计算引擎移到 Rust。
 
-刚一开始，我们就遇到了第二个问题：我们想要依赖的那一层基础张量库，还没有就绪。Rust 有很强的基础部件：做数组的 ndarray、做深度学习的 Burn、做线性代数的 faer。但一个能从自动微分一路贯通到 einsum、足以支撑真正科学计算的生态，仍不成熟。目标从一开始就不是取代这些库，而是补上那块缺失的、起补充作用的栈。
+开始之后不久，我们又发现了另一个问题：想作为基础使用的张量库还没有准备好。Rust 有按用途分开的库。数组有 ndarray，深度学习有 Burn，线性代数有 faer。但我们需要的是一层能把自动微分和 einsum 连起来、又适合科学计算的张量层。我们并不是要取代这些库，而是要连接已经存在的部分。
 
-基础已经走了多远，也值得说一说，因为当年的反对意见已经不成立了。crates.io 从 2015 年的 602 个 crate 增长到 2026 年的约 21 万个（[数据](https://github.com/shinaoka/rust_crate_count)），底座是扎实的：稠密线性代数的 faer、GPU 内核的 [CubeCL](https://github.com/tracel-ai/cubecl)、通用数值的 `num-traits` 和 `num-complex`。作为独立的层，部件也都存在：数组有 ndarray，线性代数有 nalgebra 和 faer，深度学习框架有 Burn 和 candle，NumPy 风格的数组 API 有 numr。但它们之中没有一个，是我们真正需要的：列主序（column-major）、支持动态 shape、同时具备 eager 与 traced 两种自动微分、带 einsum/FFT/CPU/CUDA 和可扩展运算、并且面向科学计算而非深度学习的张量栈。那块「中间层」正是 tenferro-rs 要承担的。我们在 faer 和 CubeCL 之上构建它，并回馈而非重新发明；移植缺失的部件如今也很廉价：SparseIR.jl 和 Julia 的张量网络栈，我们都这样做过。
+Rust 生态这几年变化很大。crates.io 从 2015 年的 602 个 crate 增长到 2026 年的约 21 万个（[数据](https://github.com/shinaoka/rust_crate_count)）。稠密线性代数有 faer，GPU kernel 有 [CubeCL](https://github.com/tracel-ai/cubecl)，通用数值有 `num-traits` 和 `num-complex`。邻近层也已经有不少库：数组有 ndarray，线性代数有 nalgebra 和 faer，深度学习框架有 Burn 和 candle，NumPy 风格的数组 API 有 numr。我们需要的是它们之间的科学计算张量栈：列主序，支持动态 shape，同时有 eager 和 traced 两种自动微分，带 einsum、FFT、CPU/CUDA 后端和可扩展运算。tenferro-rs 就是为这层而做的。我们在 faer 和 CubeCL 之上补上缺的部分，而不是重新发明已有的东西。把 SparseIR.jl 和 Julia 的张量网络代码移过来以后，也更容易看清缺的是哪一层。
 
-于是有了 [tenferro-rs](https://github.com/tensor4all/tenferro-rs)。这篇文章谈的是：我们为什么认为它值得做，以及为什么是现在、在代码不再只由人来写的时代，选择 Rust。
+[tenferro-rs](https://github.com/tensor4all/tenferro-rs) 的开发就是这样开始的。这篇文章解释我们为什么要做这个栈，以及在代码不再只由人来写的现在，为什么选择 Rust。
 
 ## 为什么现在选 Rust，而不是 Julia
 
-两三年前，我会告诉学生先从 Julia 开始。Julia 代码看起来像数学，内存管理省心，数值库也齐全。Rust 学习成本高，库也不足。
+两三年前，我大概会建议学生先从 Julia 开始。Julia 可以写得接近数学，内存管理也轻松，数值计算库也齐全。当时 Rust 要学的东西更多，库也还不够。
 
-现在我不会再给同样的建议。不是因为 Rust 变了，而是因为写代码的主体不再只是人。
+现在我不会再这样建议。不是因为 Rust 本身突然变了，而是因为代码已经不再只由人来写。
 
-Fortran、Python、Julia 都是为让一件事变便宜而设计的：人类用手写、阅读、维护代码的成本。可读性、REPL、贴近数学的记法、平缓的入门曲线。当 AI 来写代码时，这些优势就失去了部分力量。写得快不再是瓶颈，学习成本由智能体承担，而「读起来像数学」也不再保证正确：别名（aliasing）、可变性（mutation）、内存分配（allocation），从一行代码的外观上根本看不出来。
+Fortran、Python、Julia 的发展方向，都包含一个共同目标：降低人类手写、阅读和维护代码的成本。可读性、REPL、接近数学的记法、低门槛，都是为了这个目标。AI 开始写更多代码以后，取舍变了。写得快没有以前那么重要。学习成本也有相当一部分可以交给智能体承担。可是，“读起来像数学”并不保证正确。别名（aliasing）、可变性（mutation）、内存分配（allocation），从一行代码的表面看不出来。
 
-对我们来说，选择语言的标准从「人类写得有多快」变成了「我们能有多确定它是对的」。正是这一重新定位，构成了 tenferro-rs 选择 Rust 的理由。
+对我们来说，问题从“人能多快写出来”变成了“我们能多有把握地确认它是正确的”。从这个标准看，Rust 的理由就清楚了。
+
+具体来说，下面几点很重要。
+
+- 所有权和类型能在编译时排除很大一类错误。`cargo check` 几秒就能返回结果，所以智能体写错时，我们不用等到运行时才发现。
+- 构建、依赖解析、测试、基准测试都在 Cargo 里完成。不需要 CMake，也没有链接阶段的版本冲突。整套栈和依赖从零构建，在笔记本上大约两分钟；编辑和测试的循环是几十秒。
+- Rust 按模块和 crate 边界控制符号可见性。智能体只能在某一层的**内部**工作，不能伸手改另一个 crate 的内部，也不能悄悄破坏抽象。对一个由 AI 写成、约 13 万行的代码库来说，这个边界很重要。
+- 生命周期和所有权的机械性复杂度可以大体交给智能体处理，人的注意力就能放在算法、设计和正确性上。过去 Rust 入门阶段的不利因素，现在没有以前那么重。
+
+在 C++、Python、Julia 里写大型代码库时，经常会担心“这个规模还能不能验证”。用 Rust 时，这种不安明显少一些。
 
 ## 从移植到栈
 
-我们并不是要做一个通用张量库。我们只是想移植所需的东西，并不再与工具较劲。但早期下的几个设计选择，悄悄把一次张量网络移植，变成了更广的东西：
+一开始，我们并不是要做通用张量库。我们只是想把需要的部分移过来，少花时间和工具周旋。但实现过程中逐渐发现，自动微分、后端、添加新运算的方式，都不应该关在张量网络专用的一层里。于是我们把共通部分设计成独立的张量栈。
 
-- **模块化的 crate，而非单体。** 运算族各自住在自己的 crate 里，而不是塞进一个大一统的张量类型内部。
-- **自动微分规则，放在张量类型之外。** 遵循 Julia/ChainRules 的经验，导数规则属于运算的语义，而不属于某一个具体的张量类。AD 基础设施（[tidu-rs](https://github.com/tensor4all/tidu-rs)、[chainrules-rs](https://github.com/tensor4all/chainrules-rs)）是通用的，张量类型只是它的一个使用者。
-- **后端与设备都是显式的。** 数据不会在 CPU 与 GPU 之间悄悄搬运。能力与运行时可用性是两件不同的事。
-- **列主序（column-major）存储。** 与 Fortran、Julia、MATLAB、LAPACK/BLAS 对齐，并通过带步长（strided）的视图，在不做 eager 拷贝的情况下桥接行主序数据。
+- 运算族放在各自的 crate 中，而不是塞进一个大一统的张量类型。
+- 自动微分规则放在张量类型之外。按照 Julia/ChainRules 的经验，导数规则属于运算本身，而不是属于某个具体的张量类。AD 基础设施 [tidu-rs](https://github.com/tensor4all/tidu-rs) 是通用的，张量类型只是它的一个使用者。
+- 后端和设备都显式处理。数据不会在 CPU 和 GPU 之间自动搬运。某个后端能不能执行一个运算，和运行时有哪些设备可用，是分开处理的问题。
+- 存储采用列主序（column-major），与 Fortran、Julia、MATLAB、LAPACK/BLAS 对齐。行主序数据也可以通过带步长（strided）的视图处理，避免不必要的 eager 拷贝。
 
-正因为这些选择，结果才成了一个能超越张量网络去使用的东西。
+这样的设计让它也能用于张量网络以外的场景。
 
 ## 两分钟看懂 tenferro-rs
 
@@ -93,44 +102,31 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-这些断言（assertion）就是程序在验证它自己，对一个以验证为本的库来说，这很贴切。同样的计算，也能作为 JAX 风格的 traced 图运行：编译一次便可复用，并带有 `grad`/`vjp`/`jvp`（见 [`traced_autodiff_jax_style.rs`](https://github.com/tensor4all/tenferro-rs/blob/main/docs/tutorial-code/src/bin/traced_autodiff_jax_style.rs)）。你可以选用能解决问题的最低层：带类型的张量、带自动微分的 eager，或 traced 图。自动微分、CUDA、einsum、FFT、线性代数都是按需启用（opt-in）。
+这个例子里，程序会自己检查结果。这个小例子也反映了我们开发库时的基本做法。同样的计算也可以作为 JAX 风格的 traced 图运行，编译一次后复用，并带有 `grad`/`vjp`/`jvp`（见 [`traced_autodiff_jax_style.rs`](https://github.com/tensor4all/tenferro-rs/blob/main/docs/tutorial-code/src/bin/traced_autodiff_jax_style.rs)）。可以按需要选择层次：带类型的张量、带自动微分的 eager 执行，或者 traced 图。自动微分、CUDA、einsum、FFT、线性代数都可以只在需要时启用。
 
-## 运行时才知道的 shape
+## 尺寸会随数据变化的计算
 
-JAX 和 XLA 很出色，直到你的 shape 开始依赖数据。截断阈值、自适应的键维（bond dimension）、依赖数据的迭代次数：一旦尺寸只有在运行时才知道，你要么对每个新 shape 重新编译，要么退回 eager 而失去这些变换（transforms）。
+JAX 和 XLA 很擅长优化 shape 固定的计算，并对同一 shape 的输入快速重复执行。但一旦 shape 开始依赖数据，事情就会变难。截断阈值、自适应的键维（bond dimension）、依赖数据的迭代次数。如果尺寸只能在运行时知道，每出现一个新 shape 就可能需要重新编译。为了避免重新编译而退回 eager 执行时，`grad` 和 `vjp` 这样的变换也很难留在同一个流程里。
 
-对张量网络、以及许多自适应的科学计算来说，这就是日常。这正是我们日常处理的东西。
+这正是张量网络和很多自适应科学计算的日常。我们处理的大部分问题都是这样。对于 rank 或 bond dimension 会随数据变化的计算，能在不重新编译的情况下复用同一个 traced 程序很有用。
 
-tenferro 把 traced 程序只编译一次，并在具体尺寸（秩、阈值、迭代次数）于运行时被解析的同时**复用**它；在整个过程中 `grad`/`vjp`/`jvp` 都可用，而且是纯 Rust。静态 shape 不是前提，而是一个特例。（对于静态 shape 的图，`tenferro-xla` 还能 lower 到 StableHLO 并在运行时加载 PJRT 插件。）
+tenferro 会把 traced 程序编译一次。即使具体尺寸（rank、阈值、迭代次数）到运行时才确定，也会**复用**同一个程序。这个过程中 `grad`、`vjp`、`jvp` 仍然可用。另一方面，对于尺寸静态确定的计算，我们也让它能够使用 OpenXLA。`tenferro-xla` 会把图 lowering 到 StableHLO，并可以加载 PJRT 插件，所以原则上可以达到与 JAX 相同的执行速度。
 
-如果你的 shape 总是固定的，这一点不会打动你。如果不是，那它正是我们首先会提到的特性。
+## 从外部检查正确性
 
-## 为什么现在选 Rust（具体地说）
+AI 写出的数值计算库有一个明显的风险：代码看起来正确，实际却是错的。
 
-抛开上述论点，日常层面的理由也站得住脚：
+所以我们不把信任只建立在“读代码”上。我们准备了不依赖人工目视检查的机制。
 
-- **错误在执行前就被抓住。** 所有权和类型在编译期排除了一大类错误。`cargo check` 几秒内给出答案，所以当智能体出错时，你当场就知道，而不是等到运行时。
-- **Cargo 就是构建系统。** 构建、依赖解析、测试、基准测试统一在一个工具里。不需要 CMake，也没有链接期的版本冲突。从零构建整套栈连同依赖，在笔记本上约两分钟，「编辑—测试」循环是几十秒。
-- **crate 边界是强制，而非卫生习惯。** Rust 沿模块与 crate 层级控制符号可见性，所以智能体只能在某一层**内部**操作，无法伸手进入另一个 crate 的内部，也无法悄悄破坏抽象。对一个由 AI 编写的代码库（tenferro 约 13 万行）而言，正是这种结构性约束，遏制了复杂度的滚雪球。
-- **困难的部分由智能体承担。** 生命周期与所有权的机械式复杂性（Rust 那道著名的学习陡坡）由智能体来处理，于是人的注意力转向算法、设计与正确性。过去对 Rust 不利的陡峭起步，如今由一个并不介意的对象来承担。
+- 正确性用有限差分和 PyTorch 参考 oracle 来检查。[tensor-ad-oracles](https://github.com/tensor4all/tensor-ad-oracles) 是一个独立的数据库和生成器，用来检查张量与线性代数运算的导数正确性，并包含不变量、残差检查和来源（provenance）检查。
+- 性能用可复现的 [tenferro-benchmark](https://github.com/tensor4all/tenferro-benchmark) 套件，与 PyTorch 和 JAX 比较。很多 target 上，tenferro 已经达到接近 PyTorch/JAX 的 CPU/GPU 性能，后续还有优化空间。这里不固定写数字，而是链接到 benchmark 仓库，因为那里是可复现的参照，数字也会更新。
+- 设计也写成文档。REPOSITORY_RULES.md、AGENTS.md、设计笔记和 worklog 记录架构及其约束，供人和智能体共同参考。当一次失败暴露出缺少规则，例如“运算族应该是一等 crate，而不是 facade”或“不要写朴素 CPU loop fallback，要用 faer 或 BLAS”，它会成为新的约束，而不是一次性的修补。这样才能让 13 万行代码的设计不随会话漂移。
 
-用 Rust 后，我不再那么担心一个大型代码库是否还能被验证。
-
-## 验证而非信任
-
-对 AI 编写的数值库，最自然的担忧，和对所有 AI 代码的担忧是一样的：它会不会只是看起来像样的「slop（垃圾产出）」？
-
-我们的答案，是把信任从「阅读代码」转移到不依赖任何人肉眼检查的机制上：
-
-- **正确性.** 我们用有限差分和 PyTorch 参照 oracle 来检验。[tensor-ad-oracles](https://github.com/tensor4all/tensor-ad-oracles) 是一个独立的数据库与生成器，用于张量及线性代数运算的导数正确性，并由不变量、残差检查和来源（provenance）检查支撑。
-- **性能.** 我们用可复现的套件 [tenferro-benchmark](https://github.com/tensor4all/tenferro-benchmark)，与 PyTorch 和 JAX 比较来测量。在许多目标上，tenferro 在 CPU 性能上已经达到相当水平，并且仍在持续优化、尚有余量。我们在这里链接基准仓库而不写死数字，因为那里才是权威且可复现的来源，而数字会变。
-- **设计的一致性.** 我们把它写下来，而不是留在某个人的脑子里。一份不断增长的 source of truth（REPOSITORY_RULES.md、AGENTS.md、设计笔记、worklog）记录了架构及其约束，人与智能体都遵循它。当一次失败暴露出缺失的规则时（比如「运算族要做成 first-class crate，而不是一个 facade」「禁止朴素的 CPU 循环回退，要用 faer 或 BLAS」），它会变成一条新的、写下来的约束，而不是一次性的补丁。一个 13 万行的代码库之所以能保持单一而统一的设计、不在会话之间漂移，靠的正是这一点。
-
-oracle 和基准都放在**各自独立的仓库**里，所以编写这个库的智能体无法挪动标杆；我们又持续把规则与代码比对，使两者不会悄悄背离。再加上一套强制按文件覆盖率阈值的完整测试，你得到的就是一种与 vibe coding 截然不同的开发方式：正确性、性能与设计，都是从外部、系统性地确立的，而不是靠肉眼断言。
+oracle 和 benchmark 位于不同的仓库中，写库的智能体不能移动基准。我们也持续把规则和代码对照，尽早发现偏离。再加上按文件设置覆盖率阈值的测试，正确性、性能和设计就由几套独立机制来检查，而不是只靠 review。
 
 ## 试一试
 
-首批 tenferro crate 今天已在 **crates.io** 上，并且是作为模块化的栈本身发布的，而不是一个单一的捆绑包：
+首批 tenferro crate 已经在 **crates.io** 上。它们不是一个单一 bundle，而是按模块发布的栈，可以只引入需要的部分：
 
 ```toml
 [dependencies]
@@ -140,16 +136,16 @@ tenferro-ad     = "0.1"   # eager + traced autodiff
 # tenferro-gpu, tenferro-xla: add only what you need
 ```
 
-现在还很早期。它是 v0.1，是预览版，而非定型的 1.0。但它不只是实验：tenferro-rs 已经是我们的 Rust 张量网络栈 [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs)（TreeTN、QTT、TCI）的引擎，在开发过程中已经经受真实科学计算工作负载的检验。如果你的宿主语言是 Python，JAX 和 PyTorch 是自然的选择；tenferro-rs 面向的是那些希望在 Rust 中原生拥有这类栈的项目。而且它足够早期，早到你的反馈能改变它的走向。
+tenferro-rs 仍然是 v0.1 预览版，还不是定型的 1.0。但它也不是单纯的实验。我们已经把它用作 Rust 张量网络栈 [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs)（TreeTN、QTT、TCI）的引擎，并在实际科学计算任务中边用边开发。如果宿主语言是 Python，JAX 和 PyTorch 是自然选择。tenferro-rs 面向的是想从 Rust 直接使用类似功能的人。因为还处在预览阶段，现在的用户反馈仍然容易反映到设计中。
 
-我们尤其想听到这些人的声音：用过 ndarray、nalgebra/faer、Burn/candle、PyTorch/JAX，或在科学计算/HPC 中用过 Julia/Fortran 的人。
+特别希望在科学计算或 HPC 中用过 ndarray、nalgebra/faer、Burn/candle、PyTorch/JAX，或者 Julia/Fortran 的人试用。
 
-- **文档与指南：** https://tensor4all.org/tenferro-rs/
-- **源码：** https://github.com/tensor4all/tenferro-rs
-- **复现基准：** https://github.com/tensor4all/tenferro-benchmark
-- **检验正确性：** https://github.com/tensor4all/tensor-ad-oracles
+- 文档与指南: https://tensor4all.org/tenferro-rs/
+- 源码: https://github.com/tensor4all/tenferro-rs
+- 复现基准测试: https://github.com/tensor4all/tenferro-benchmark
+- 检查正确性: https://github.com/tensor4all/tensor-ad-oracles
 
-如果你在真实的科学计算工作负载上试用它，发现有缺失、变慢或出错之处，那就是对我们最有用的反馈。
+如果你在真实科学计算任务上试用后发现缺少功能、速度慢或结果不对，请告诉我们。这类报告非常有用。
 
 ## 致谢
 
