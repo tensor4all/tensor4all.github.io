@@ -8,7 +8,7 @@ title: tenferro-rs のご紹介
 
 文責: **Hiroshi Shinaoka**（埼玉大学）、tensor4all チーム
 
-*🌐 English: [Introducing tenferro-rs](https://tensor4all.org/blog/introducing-tenferro-rs/)*
+*🌐 [English](https://tensor4all.org/blog/introducing-tenferro-rs/) · [日本語](https://tensor4all.org/blog/introducing-tenferro-rs-ja/) · [简体中文](https://tensor4all.org/blog/introducing-tenferro-rs-zh/)*
 
 ![tenferro-rs architecture overview](tenferro-architecture.svg)
 
