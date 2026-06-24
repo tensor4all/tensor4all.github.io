@@ -8,6 +8,8 @@ title: Introducing tenferro-rs
 
 by **Hiroshi Shinaoka** (Saitama University), for the tensor4all team
 
+*🌐 日本語版: [tenferro-rs のご紹介](https://tensor4all.org/blog/introducing-tenferro-rs-ja/)*
+
 ![tenferro-rs architecture overview](tenferro-architecture.svg)
 
 ---
