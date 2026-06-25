@@ -12,7 +12,9 @@ title: Frequently Asked Questions
 ---
 
 ### How do I get started?
-We have an extensive set of online tutorials that teach you how to use our libraries, for both the Julia and C++/Python version of our library.
+Start with the [software map](software.html). For new users today, we
+recommend `xfac` for C++ and Python workflows, and the stable Julia packages
+for Julia workflows.
 
 - **C++/Python**: Install the library using the [installation instructions](https://github.com/tensor4all/xfac/blob/main/README.md#installation), then follow the [tutorial pages](https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html).
 - **Julia**: Tutorials are available [online](https://tensor4all.org/juliatutorials/index.html) and can be run in your web browser. If you wish to run notebooks locally on your computer, install julia using the [installation instructions](https://tensor4all.org/juliatutorials/index.html#install-julia), then copy-paste the instructions at the top of each online notebook to download and run that specific notebook.

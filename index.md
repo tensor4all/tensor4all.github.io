@@ -35,13 +35,10 @@ Please check the [reference](reference.html) page for more information on TCI an
 
 ## Code
 
-We provide two software libraries that implement algorithms from the above manuscript for computing low-rank tensor representations.
-The code focuses on recent applications of tensor networks to objects that do not necessarily involve many-body quantum mechanics. 
-It also contain known and new variants of the tensor cross interpolation (TCI) algorithm for unfolding tensors into tensor trains.
-One code is called Xfac (written in C++ with Python bindings), and a second implementation with similar functionality is based on Julia:
-
-* [Xfac (C++ / Python)](https://xfac.readthedocs.io/en/latest/intro.html)
-* [Julia](julia.html)
+The tensor4all software ecosystem includes current C++/Python and Julia
+libraries, actively developed Rust/Julia components, and maintenance-mode
+packages. See the [software map](software.html) for recommendations on which
+library to use.
 
 <a id="onlinemeeting"></a>
 ## Monthly online meeting
