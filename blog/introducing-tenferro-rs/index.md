@@ -237,13 +237,13 @@ you can pull in only what you need:
 
 ```toml
 [dependencies]
-tenferro-tensor = "0.1"   # tensors, views, backends
-tenferro-ad     = "0.1"   # eager + traced autodiff
+tenferro-tensor = "0.2"   # tensors, views, backends
+tenferro-ad     = "0.2"   # eager + traced autodiff
 # plus tenferro-linalg, tenferro-einsum, tenferro-fft, tenferro-cpu,
 # tenferro-gpu, tenferro-xla: add only what you need
 ```
 
-tenferro-rs is still a v0.1 preview; the API is not a finalized 1.0. But it is
+tenferro-rs is still a v0.2 preview; the API is not a finalized 1.0. But it is
 not just an experiment. We already use it as the engine under
 [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs), our Rust
 tensor-network stack (TreeTN, QTT, TCI), and develop it against real scientific
