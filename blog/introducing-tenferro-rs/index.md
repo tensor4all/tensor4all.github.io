@@ -4,7 +4,7 @@ title: Introducing tenferro-rs
 
 # From Julia to Rust: a differentiable tensor stack for scientific computing in the agentic AI era
 
-*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) is a Rust-native dense tensor stack: linear algebra, PyTorch-style eager autodiff, JAX-style traced transforms, NumPy-style einsum, FFT, extensible operation crates, and explicit CPU/CUDA backends. The first crates are on crates.io as of June 23, 2026 (JST).*
+*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) is a Rust-native tensor & autodiff stack for scientific computing: linear algebra, PyTorch-style eager autodiff, JAX-style traced transforms, NumPy-style einsum, FFT, extensible operation crates, and explicit CPU/CUDA backends. The first crates are on crates.io as of June 23, 2026 (JST).*
 
 by **Hiroshi Shinaoka** (Saitama University), for the tensor4all team
 
@@ -254,7 +254,7 @@ Rust. At this preview stage, user feedback can still shape the design.
 We especially want people who have used ndarray, nalgebra/faer, Burn/candle,
 PyTorch/JAX, or Julia/Fortran in scientific and HPC work to try it:
 
-- Docs and guides: https://tensor4all.org/tenferro-rs/
+- Docs and guides: https://tensor4all.org/tenferro-rs/ — start with [Getting Started](https://tensor4all.org/tenferro-rs/getting-started/index.html)
 - Source: https://github.com/tensor4all/tenferro-rs
 - Reproduce the benchmarks: https://github.com/tensor4all/tenferro-benchmark
 - Check correctness: https://github.com/tensor4all/tensor-ad-oracles
