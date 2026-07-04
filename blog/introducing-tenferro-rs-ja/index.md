@@ -4,7 +4,7 @@ title: tenferro-rs のご紹介
 
 # Julia から Rust へ：AI エージェント時代の科学計算向け微分可能テンソルスタック
 
-*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) は Rust ネイティブな密テンソルスタックだ。線形代数、PyTorch 流の eager 自動微分、JAX 流の traced 変換、NumPy 流の einsum、FFT、拡張可能な演算 crate 群と、明示的な CPU/CUDA バックエンドを備える。最初の crate 群は 2026 年 6 月 23 日（JST）に crates.io へ公開した。*
+*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) は科学計算のための Rust ネイティブなテンソル＆自動微分スタックだ。線形代数、PyTorch 流の eager 自動微分、JAX 流の traced 変換、NumPy 流の einsum、FFT、拡張可能な演算 crate 群と、明示的な CPU/CUDA バックエンドを備える。最初の crate 群は 2026 年 6 月 23 日（JST）に crates.io へ公開した。*
 
 文責: **Hiroshi Shinaoka**（埼玉大学）、tensor4all チーム
 
@@ -140,7 +140,7 @@ tenferro-rs はまだ v0.2 のプレビューで、1.0 として固まったも�
 
 特に、ndarray、nalgebra/faer、Burn/candle、PyTorch/JAX、あるいは Julia/Fortran を科学計算・HPC で使ってきた方に試してほしい。
 
-- ドキュメントとガイド: https://tensor4all.org/tenferro-rs/
+- ドキュメントとガイド: https://tensor4all.org/tenferro-rs/ — まずは [Getting Started](https://tensor4all.org/tenferro-rs/getting-started/index.html) から
 - ソース: https://github.com/tensor4all/tenferro-rs
 - ベンチマークを再現する: https://github.com/tensor4all/tenferro-benchmark
 - 正しさを試す: https://github.com/tensor4all/tensor-ad-oracles

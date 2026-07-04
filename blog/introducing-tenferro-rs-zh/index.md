@@ -4,7 +4,7 @@ title: 介绍 tenferro-rs
 
 # 从 Julia 到 Rust：AI 智能体时代面向科学计算的可微张量栈
 
-*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) 是一个 Rust 原生的稠密张量栈：线性代数、PyTorch 风格的 eager 自动微分、JAX 风格的 traced 变换、NumPy 风格的 einsum、FFT、可扩展的运算 crate，以及显式的 CPU/CUDA 后端。首批 crate 已于 2026 年 6 月 23 日（JST）发布到 crates.io。*
+*[tenferro-rs](https://github.com/tensor4all/tenferro-rs) 是一个面向科学计算的 Rust 原生张量与自动微分栈：线性代数、PyTorch 风格的 eager 自动微分、JAX 风格的 traced 变换、NumPy 风格的 einsum、FFT、可扩展的运算 crate，以及显式的 CPU/CUDA 后端。首批 crate 已于 2026 年 6 月 23 日（JST）发布到 crates.io。*
 
 作者: **Hiroshi Shinaoka**（埼玉大学），tensor4all 团队
 
@@ -140,7 +140,7 @@ tenferro-rs 仍然是 v0.2 预览版，还不是定型的 1.0。但它也不是�
 
 特别希望在科学计算或 HPC 中用过 ndarray、nalgebra/faer、Burn/candle、PyTorch/JAX，或者 Julia/Fortran 的人试用。
 
-- 文档与指南: https://tensor4all.org/tenferro-rs/
+- 文档与指南: https://tensor4all.org/tenferro-rs/ — 建议从 [Getting Started](https://tensor4all.org/tenferro-rs/getting-started/index.html) 开始
 - 源码: https://github.com/tensor4all/tenferro-rs
 - 复现基准测试: https://github.com/tensor4all/tenferro-benchmark
 - 检查正确性: https://github.com/tensor4all/tensor-ad-oracles
