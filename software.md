@@ -55,6 +55,12 @@ For Julia examples, see the [Julia tutorials](juliatutorials/index.html).
 The next generation of the tensor4all ecosystem is written in Rust, in two
 layers.
 
+For a map of the whole Rust stack, including the backend libraries below
+tenferro-rs (cpueinsum, tcontract, tlinalg, strided-rs) and the hataori
+execution engine, see the [Rust stack guides](/tensor4all-meta/stack/): one
+[for tensor network users](/tensor4all-meta/stack/users.html) and one
+[for backend developers](/tensor4all-meta/stack/backend.html).
+
 ### tenferro-rs: tensor and autodiff engine (use now)
 
 [`tenferro-rs`](https://github.com/tensor4all/tenferro-rs) is a Rust-native
