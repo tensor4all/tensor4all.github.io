@@ -84,7 +84,7 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a></h3>
-    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
+    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed, optionally parallelized along the batch dimension. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
