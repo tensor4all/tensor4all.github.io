@@ -79,12 +79,12 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
 <div class="cards">
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tcontract-rs">tcontract</a></h3>
-    <p>Binary tensor contraction over arbitrary strides, with a TAPP and DLPack C ABI.</p>
+    <p>Binary tensor contraction over arbitrary strides, with a TAPP and DLPack C ABI. <a href="https://github.com/tensor4all/tcontract-benchmark">Benchmarks</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a></h3>
-    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed.</p>
+    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
@@ -94,7 +94,7 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/strided-rs">strided-rs</a></h3>
-    <p>The strided view types every layer shares, with permutation and elementwise kernels.</p>
+    <p>The strided view types every layer shares, with permutation and elementwise kernels. <a href="https://github.com/tensor4all/strided-rs-benchmark-suite">Benchmarks</a>.</p>
     <span class="pill ok">crates.io 0.4.8</span>
   </div>
   <div class="card">
@@ -103,11 +103,23 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
     <span class="pill wip">git</span>
   </div>
   <div class="card">
-    <h3><a href="https://github.com/tensor4all/faer">faer (t4a fork)</a></h3>
-    <p>Our fork of the pure Rust linear algebra library, with strided and batched entry points.</p>
-    <span class="pill ok">crates.io t4a-faer</span>
+    <h3><a href="https://github.com/tensor4all/faer">t4a-faer</a></h3>
+    <p>Our fork of <a href="https://github.com/sarah-quinones/faer-rs">faer</a>, the pure Rust linear algebra library by Sarah Quinones. It adds strided and batched entry points, caller owned workspaces, an explicit thread policy and numerical fixes; every change is recorded in its <a href="https://github.com/tensor4all/faer/blob/main/PATCHSET.md">patch ledger</a>.</p>
+    <span class="pill ok">crates.io t4a-faer 0.24.4</span>
   </div>
 </div>
+
+### Benchmarks {#benchmarks}
+
+Performance claims are backed by public benchmark repositories, kept separate from the libraries so that results can be keyed by commit and hardware.
+
+| Repository | What it measures |
+| --- | --- |
+| [tenferro-benchmark](https://github.com/tensor4all/tenferro-benchmark) | tenferro-rs against PyTorch and JAX on CPU and GPU |
+| [tensor4all-benchmark](https://github.com/tensor4all/tensor4all-benchmark) | Tensor network algorithms in tensor4all-rs: QTT products and MPO-MPO contraction |
+| [tcontract-benchmark](https://github.com/tensor4all/tcontract-benchmark) | Binary strided contraction in tcontract |
+| [tlinalg-benchmark](https://github.com/tensor4all/tlinalg-benchmark) | Batched factorizations in tlinalg |
+| [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite) | strided-rs kernels against HPTT, Julia Base and Strided.jl |
 
 <p class="small">Release status changes quickly; the <a href="/tensor4all-meta/stack/#repos">repository table</a> in the stack overview is kept current.</p>
 
