@@ -55,8 +55,8 @@ description: An open community building tensor network methods and a Rust softwa
       <ul>
         <li><a href="https://github.com/tensor4all/strided-rs">strided-rs</a>: strided views and permutation kernels</li>
         <li><a href="https://github.com/tensor4all/tcontract-rs">tcontract</a>: binary contraction over arbitrary strides, with a C ABI</li>
-        <li><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a>: batched SVD, QR, LU, Cholesky and eigensolvers, optionally parallelized along the batch dimension</li>
-        <li><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a>: N-ary einsum with a caller supplied order</li>
+        <li><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a>: batched SVD, QR, LU, Cholesky and eigensolvers, optionally parallelized along the batch dimension, with a C API</li>
+        <li><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a>: N-ary einsum with a caller supplied order, with a C API</li>
         <li><a href="https://github.com/tensor4all/hataori-rs">hataori</a>: map and pmap over Rayon and MPI</li>
             <li><a href="https://github.com/tensor4all/faer">t4a-faer</a>: our fork of <a href="https://github.com/sarah-quinones/faer-rs">faer</a> with strided and batched entry points</li>
       </ul>
@@ -72,7 +72,7 @@ description: An open community building tensor network methods and a Rust softwa
   <div class="cards">
     <div class="card">
       <h3>Not only for tensor networks</h3>
-      <p>The kernels know nothing about tensor networks: they take plain strided views and an explicit context, and tcontract exposes a C ABI, so existing C, C++ and Fortran codes can call them directly.</p>
+      <p>The kernels know nothing about tensor networks: they take plain strided views and an explicit context, and tcontract, tlinalg and cpueinsum each ship a C API, so existing C, C++ and Fortran codes can call them directly.</p>
     </div>
     <div class="card">
       <h3>Explicit by design</h3>

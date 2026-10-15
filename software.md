@@ -20,7 +20,7 @@ tensor4all maintains two generations of software. The established C++, Python an
     <span class="a">tenferro-rs</span>
   </a>
   <a class="choice" href="#kernels">
-    <span class="q">I need fast contraction or batched linear algebra in my own code</span>
+    <span class="q">I need fast contraction or batched linear algebra in my own code, even from C or Fortran</span>
     <span class="a">tcontract, tlinalg, cpueinsum, strided-rs</span>
   </a>
   <a class="choice" href="#kernels">
@@ -84,12 +84,12 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a></h3>
-    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed, optionally parallelized along the batch dimension. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
+    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed, optionally parallelized along the batch dimension, with a C API. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a></h3>
-    <p>N-ary einsum over integer labels with a caller supplied contraction order.</p>
+    <p>N-ary einsum over integer labels with a caller supplied contraction order, with a C API.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
