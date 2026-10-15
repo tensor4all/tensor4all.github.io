@@ -1,110 +1,153 @@
 ---
 title: Software
 ---
-# Software
+<p class="eyebrow">Software</p>
+# Pick by what you want to do
 
-The tensor4all software ecosystem is organized by status and workflow. For new
-users today, we recommend `xfac` for C++ and Python workflows, and the stable
-Julia packages for Julia workflows. Active development is focused on the
-next-generation Rust stack: `tenferro-rs`, a tensor and autodiff engine that
-is ready for production use with a relatively stable API, and `tensor4all-rs`
-(TCI, quantics tensor trains, and tree tensor networks), which is under active
-development on top of it.
+tensor4all maintains two generations of software. The established C++, Python and Julia libraries are stable and documented. The Rust stack is where new development happens, and its lower layers are general purpose tools for computational physics, not only for tensor networks.
 
-## Software map
+<div class="chooser">
+  <a class="choice" href="#established">
+    <span class="q">I want to use TCI or quantics tensor trains today</span>
+    <span class="a">xfac (C++, Python) or the Julia packages</span>
+  </a>
+  <a class="choice" href="#tensor4all-rs">
+    <span class="q">I want the newest tensor network algorithms</span>
+    <span class="a">tensor4all-rs, or Tensor4all.jl from Julia</span>
+  </a>
+  <a class="choice" href="#tenferro-rs">
+    <span class="q">I need dense tensors with autodiff in Rust</span>
+    <span class="a">tenferro-rs</span>
+  </a>
+  <a class="choice" href="#kernels">
+    <span class="q">I need fast contraction or batched linear algebra in my own code</span>
+    <span class="a">tcontract, tlinalg, cpueinsum, strided-rs</span>
+  </a>
+  <a class="choice" href="#kernels">
+    <span class="q">I want to run many tasks over threads and MPI ranks</span>
+    <span class="a">hataori</span>
+  </a>
+  <a class="choice" href="#maintenance">
+    <span class="q">I have an existing workflow on an older package</span>
+    <span class="a">Maintenance packages</span>
+  </a>
+</div>
 
-| Status | Library | Best for |
-| --- | --- | --- |
-| Use now | [`xfac`](https://github.com/tensor4all/xfac) / [Python tutorials](https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html) | C++ and Python workflows; original TCI implementation |
-| Use now | [`TensorCrossInterpolation.jl`](https://github.com/tensor4all/TensorCrossInterpolation.jl/) | Core TCI algorithms in Julia |
-| Use now | [`QuanticsTCI.jl`](https://github.com/tensor4all/QuanticsTCI.jl/) | Convenient QTCI interface in Julia |
-| Use now | [`QuanticsGrids.jl`](https://github.com/tensor4all/QuanticsGrids.jl/) | Quantics grids and coordinate transformations |
-| Use now | [`InterpolativeQTT.jl`](https://github.com/tensor4all/InterpolativeQTT.jl/) | Multiscale interpolative QTT construction in Julia |
-| Use now | [`tenferro-rs`](https://github.com/tensor4all/tenferro-rs) | Rust tensor and autodiff engine: einsum, linear algebra, FFT, CPU/CUDA backends |
-| Active development | [`tensor4all-rs`](https://github.com/tensor4all/tensor4all-rs) | Next-generation Rust implementation of TCI, QTT, and tree tensor networks |
-| Active development | [`Tensor4all.jl`](https://github.com/tensor4all/Tensor4all.jl) | Julia frontend for `tensor4all-rs` |
-| Maintenance | [`Quantics.jl`](https://github.com/tensor4all/Quantics.jl/) | Existing QTT workflows built on ITensors.jl |
-| Maintenance | [`FastMPOContractions.jl`](https://github.com/tensor4all/FastMPOContractions.jl/) | Existing MPO contraction workflows |
-| Maintenance | [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl/) | Historical ITensors conversion package |
+## The Rust stack <span class="new">New</span> {#rust}
 
-## Use now: C++ and Python
+A layered set of Rust libraries. Each layer depends only on the layers below it, and each can be used on its own. All of them pass explicit execution contexts instead of starting hidden thread pools, so they compose predictably inside MPI programs, Julia sessions and other host codes.
 
-[`xfac`](https://github.com/tensor4all/xfac) is the original C++
-implementation of tensor cross interpolation in the tensor4all ecosystem. It
-includes Python bindings and remains the recommended current path for C++ and
-Python users.
+<figure class="figure">
+  <div class="map-scroll"><div class="stack-map" data-focus="all"></div></div>
+  <figcaption>Boxes link to the repositories. The <a href="/tensor4all-meta/stack/">stack overview</a> explains each layer, with guides <a href="/tensor4all-meta/stack/users.html">for tensor network users</a> and <a href="/tensor4all-meta/stack/backend.html">for backend developers</a>.</figcaption>
+</figure>
 
-- Documentation: [xfac readthedocs](https://xfac.readthedocs.io/en/latest/intro.html)
-- Python tutorials: [tutorial-python](https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html)
-- Source: [tensor4all/xfac](https://github.com/tensor4all/xfac)
+### tensor4all-rs: tensor network algorithms {#tensor4all-rs}
 
-## Use now: Julia
+<div class="lib">
+  <div>
+    <p>The next generation implementation of the tensor4all algorithms: tensor cross interpolation, quantics tensor trains with Fourier and shift operators, tree tensor networks of arbitrary topology, patching and HDF5 I/O. A C API serves language bindings, and <a href="https://github.com/tensor4all/Tensor4all.jl">Tensor4all.jl</a> is its Julia frontend for light use and teaching.</p>
+    <p>New algorithms land here first. It suits early adopters comfortable with Rust; crates are used as git dependencies for now.</p>
+  </div>
+  <ul class="facts">
+    <li><span class="pill wip">active development</span></li>
+    <li><a href="https://tensor4all.org/tensor4all-rs/">Documentation</a></li>
+    <li><a href="https://github.com/tensor4all/tensor4all-rs">Source</a></li>
+    <li><a href="https://github.com/tensor4all/tensor4all-benchmark">Benchmarks</a></li>
+  </ul>
+</div>
 
-These Julia packages are the current recommended route for Julia users who
-need stable workflows.
+### tenferro-rs: tensor runtime and autodiff {#tenferro-rs}
 
-- [`TensorCrossInterpolation.jl`](https://github.com/tensor4all/TensorCrossInterpolation.jl/) provides the core TCI algorithms.
-- [`QuanticsTCI.jl`](https://github.com/tensor4all/QuanticsTCI.jl/) provides a convenient interface for quantics TCI, built on `TensorCrossInterpolation.jl` and `QuanticsGrids.jl`.
-- [`QuanticsGrids.jl`](https://github.com/tensor4all/QuanticsGrids.jl/) provides quantics grids and coordinate transformations.
-- [`InterpolativeQTT.jl`](https://github.com/tensor4all/InterpolativeQTT.jl/) implements multiscale interpolative construction of quantized tensor trains.
+<div class="lib">
+  <div>
+    <p>Typed and dynamic dense tensors with einsum, linear algebra and FFT on CPU, CUDA and XLA backends. Eager mode offers PyTorch style <code>backward()</code>; traced mode offers JAX style graph transforms with VJP, JVP and higher order derivatives. Column major storage and explicit device control make it a natural fit for code that talks to LAPACK, Fortran or Julia.</p>
+    <p>Ready for production use with a relatively stable API. Start with <code>tenferro-runtime</code>, <code>tenferro-cpu</code> and the operation crates you need. Background: <a href="{{ '/blog/introducing-tenferro-rs/' | relative_url }}">Introducing tenferro-rs</a> (<a href="{{ '/blog/introducing-tenferro-rs-ja/' | relative_url }}">日本語</a>, <a href="{{ '/blog/introducing-tenferro-rs-zh/' | relative_url }}">中文</a>).</p>
+  </div>
+  <ul class="facts">
+    <li><span class="pill ok">crates.io 0.7.1</span></li>
+    <li><a href="https://tensor4all.org/tenferro-rs/">Documentation</a></li>
+    <li><a href="https://github.com/tensor4all/tenferro-rs">Source</a></li>
+    <li><a href="https://github.com/tensor4all/tenferro-benchmark">Benchmarks vs PyTorch and JAX</a></li>
+  </ul>
+</div>
 
-For Julia examples, see the [Julia tutorials](juliatutorials/index.html).
+### Kernels and infrastructure {#kernels}
 
-## The Rust stack: tenferro-rs and tensor4all-rs
+These libraries know nothing about tensor networks or about tenferro's tensor types. They take borrowed strided views and an explicit context, which keeps them small and reusable from other codes, including from C.
 
-The next generation of the tensor4all ecosystem is written in Rust, in two
-layers.
+<div class="cards">
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/tcontract-rs">tcontract</a></h3>
+    <p>Binary tensor contraction over arbitrary strides, with a TAPP and DLPack C ABI.</p>
+    <span class="pill wip">git</span>
+  </div>
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a></h3>
+    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed.</p>
+    <span class="pill wip">git</span>
+  </div>
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a></h3>
+    <p>N-ary einsum over integer labels with a caller supplied contraction order.</p>
+    <span class="pill wip">git</span>
+  </div>
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/strided-rs">strided-rs</a></h3>
+    <p>The strided view types every layer shares, with permutation and elementwise kernels.</p>
+    <span class="pill ok">crates.io 0.4.8</span>
+  </div>
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/hataori-rs">hataori</a></h3>
+    <p>Data parallel map and pmap over serial, Rayon, MPI and hybrid execution.</p>
+    <span class="pill wip">git</span>
+  </div>
+  <div class="card">
+    <h3><a href="https://github.com/tensor4all/faer">faer (t4a fork)</a></h3>
+    <p>Our fork of the pure Rust linear algebra library, with strided and batched entry points.</p>
+    <span class="pill ok">crates.io t4a-faer</span>
+  </div>
+</div>
 
-For a map of the whole Rust stack, including the backend libraries below
-tenferro-rs (cpueinsum, tcontract, tlinalg, strided-rs) and the hataori
-execution engine, see the [Rust stack guides](/tensor4all-meta/stack/): one
-[for tensor network users](/tensor4all-meta/stack/users.html) and one
-[for backend developers](/tensor4all-meta/stack/backend.html).
+<p class="small">Release status changes quickly; the <a href="/tensor4all-meta/stack/#repos">repository table</a> in the stack overview is kept current.</p>
 
-### tenferro-rs: tensor and autodiff engine (use now)
+## Established libraries {#established}
 
-[`tenferro-rs`](https://github.com/tensor4all/tenferro-rs) is a Rust-native
-tensor computation stack with opt-in automatic differentiation for scientific
-workloads. It provides typed and dynamic dense tensors, explicit CPU/CUDA
-backend dispatch, linear algebra, NumPy-style einsum, FFT, PyTorch-style eager
-autodiff, and JAX-style traced transforms. It sits between low-level array
-crates and full deep-learning frameworks, targeting scientific code that needs
-column-major storage, dynamic shapes, and extensible operations.
+Stable, documented and in use in published work. Choose these when you need a dependable workflow now.
 
-tenferro-rs is ready for production use, with a relatively stable API.
+<div class="cards">
+  <div class="card">
+    <span class="tag ok">C++ and Python</span>
+    <h3><a href="https://github.com/tensor4all/xfac">xfac</a></h3>
+    <p>The original implementation of tensor cross interpolation, with Python bindings.</p>
+    <ul>
+      <li><a href="https://xfac.readthedocs.io/en/latest/intro.html">Documentation</a></li>
+      <li><a href="https://xfac.readthedocs.io/en/latest/tutorial-python/intro-tutorial.html">Python tutorials</a></li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag ok">Julia</span>
+    <h3>TCI in Julia</h3>
+    <ul>
+      <li><a href="https://github.com/tensor4all/TensorCrossInterpolation.jl/">TensorCrossInterpolation.jl</a>: core TCI algorithms</li>
+      <li><a href="https://github.com/tensor4all/QuanticsTCI.jl/">QuanticsTCI.jl</a>: quantics TCI for non experts</li>
+      <li><a href="https://github.com/tensor4all/QuanticsGrids.jl/">QuanticsGrids.jl</a>: grids and coordinate transforms</li>
+      <li><a href="https://github.com/tensor4all/InterpolativeQTT.jl/">InterpolativeQTT.jl</a>: multiscale interpolative QTT</li>
+    </ul>
+    <a class="go" href="{{ '/juliatutorials/' | relative_url }}">Julia tutorials &rarr;</a>
+  </div>
+</div>
 
-- Crates are published on [crates.io](https://crates.io/crates/tenferro-runtime); start with `tenferro-runtime`, `tenferro-cpu`, and the operation crates you need.
-- Documentation: [tensor4all.org/tenferro-rs](https://tensor4all.org/tenferro-rs/)
-- Performance is tracked openly against PyTorch and JAX in [tenferro-benchmark](https://github.com/tensor4all/tenferro-benchmark).
-- Background and design rationale: [Introducing tenferro-rs](https://tensor4all.org/blog/introducing-tenferro-rs/) (also in [日本語](https://tensor4all.org/blog/introducing-tenferro-rs-ja/) and [简体中文](https://tensor4all.org/blog/introducing-tenferro-rs-zh/)).
+## Maintenance packages {#maintenance}
 
-### tensor4all-rs: tensor networks (active development)
+Kept working for existing users, not recommended for new projects.
 
-[`tensor4all-rs`](https://github.com/tensor4all/tensor4all-rs) is the
-next-generation implementation of the tensor4all algorithms, built on
-`tenferro-rs`. It covers tensor cross interpolation (TCI), quantics tensor
-trains, tree tensor networks with arbitrary topology, and an ITensors.jl-like
-dynamic tensor API, plus the C API used by language bindings.
+| Package | Status |
+| --- | --- |
+| [Quantics.jl](https://github.com/tensor4all/Quantics.jl/) | High level QTT operations on ITensors.jl |
+| [FastMPOContractions.jl](https://github.com/tensor4all/FastMPOContractions.jl/) | Existing MPO contraction workflows |
+| [TCIITensorConversion.jl](https://github.com/tensor4all/TCIITensorConversion.jl/) | Historical; now an extension of TensorCrossInterpolation.jl |
 
-- Documentation: [tensor4all.org/tensor4all-rs](https://tensor4all.org/tensor4all-rs/)
-- The crates are not yet published on crates.io; use git dependencies as described in the repository README.
-- [`Tensor4all.jl`](https://github.com/tensor4all/Tensor4all.jl) is the Julia frontend for this stack, aimed at light use and teaching. Performance-critical applications should use `tensor4all-rs` directly.
+Old `T4A****.jl` repositories were experiments and are not maintained as public libraries.
 
-New features and performance work land in this stack first. tensor4all-rs is
-ready for early adopters comfortable with Rust; users who need a stable,
-documented workflow today can start with `xfac` or the stable Julia packages
-above and migrate later.
-
-## Maintenance and legacy packages
-
-These packages are useful for existing workflows, but they are not the primary
-recommendation for new users.
-
-- [`Quantics.jl`](https://github.com/tensor4all/Quantics.jl/) provides a high-level QTT interface built on ITensors.jl.
-- [`FastMPOContractions.jl`](https://github.com/tensor4all/FastMPOContractions.jl/) supports existing MPO contraction workflows.
-- [`TCIITensorConversion.jl`](https://github.com/tensor4all/TCIITensorConversion.jl/) is historical. Its conversion functionality has been absorbed into `TensorCrossInterpolation.jl` as an extension.
-
-## Experimental repositories
-
-Some old `T4A****.jl` repositories were used for experiments. They are not
-recommended for new users and are not planned as maintained public libraries.
+<script src="https://tensor4all.org/tensor4all-meta/stack/assets/stack-map.js" defer></script>

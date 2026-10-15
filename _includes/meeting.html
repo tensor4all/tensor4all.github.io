@@ -1,0 +1,10 @@
+{% assign m = include.m %}<li class="meeting{% if include.upcoming %} upcoming{% endif %}"{% if include.upcoming %} data-meeting-date="{{ m.date | date: '%Y-%m-%d' }}"{% if include.past_target %} data-past-target="{{ include.past_target }}"{% endif %}{% endif %}>
+  <time datetime="{{ m.date | date: '%Y-%m-%d' }}">{{ m.date | date: "%b %-d, %Y" }}</time>
+  <div>
+    {% if m.kind == "talk" %}<span class="pill talk">Talk</span>{% elsif m.kind == "developer" %}<span class="pill dev">Developer meeting</span>{% endif %}
+    {% if m.speaker %}<strong>{{ m.speaker }}</strong>{% endif %}{% if m.title %}{% if m.speaker %}: {% endif %}{{ m.title }}{% endif %}
+    {% if include.upcoming and m.time %}<span class="mtime">{{ m.time }}</span>{% endif %}
+    {% if m.note %}<span class="mnote">{{ m.note }}</span>{% endif %}
+    {% if m.links %}<span class="mlinks">{% for l in m.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% unless forloop.last %} · {% endunless %}{% endfor %}</span>{% endif %}
+  </div>
+</li>

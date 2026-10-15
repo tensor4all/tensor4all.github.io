@@ -1,0 +1,170 @@
+---
+layout: default
+layout_kind: home
+description: An open community building tensor network methods and a Rust software stack for computational physics.
+---
+<div class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">tensor4all</p>
+  <h1>Tensor networks, and the Rust stack for computational physics underneath them</h1>
+  <p class="lead">We are an open research community working on tensor cross interpolation, quantics tensor trains and tree tensor networks. To run them we build a layered Rust stack, from strided kernels and batched linear algebra up to a tensor runtime with autodiff, that any computational physics code can use.</p>
+  <div class="actions">
+    <a class="btn primary" href="#rust">Explore the Rust stack</a>
+    <a class="btn" href="{{ '/matrix.html' | relative_url }}">Join us on Matrix</a>
+    <a class="btn" href="{{ '/software.html' | relative_url }}">All software</a>
+  </div>
+  <ul class="stats">
+    <li><strong>~50</strong>members in the Matrix space</li>
+    <li><strong>120+</strong>on the mailing list</li>
+    <li><strong>Monthly</strong>online meetings since 2024</li>
+  </ul>
+</section>
+
+<section class="section" aria-labelledby="next-h">
+  <h2 id="next-h">Next meeting</h2>
+  {% assign today = site.time | date: '%Y-%m-%d' %}
+  <ul class="meetings" data-upcoming-list="home-next">
+  {% assign shown = 0 %}
+  {% assign upcoming = site.data.meetings | reverse %}
+  {% for m in upcoming %}{% assign d = m.date | date: '%Y-%m-%d' %}{% if d >= today and shown == 0 %}{% include meeting.html m=m upcoming=true %}{% assign shown = 1 %}{% endif %}{% endfor %}
+  </ul>
+  <p id="home-next-none" {% if shown == 1 %}hidden{% endif %}>The next date will be announced on the mailing list and in the Matrix announcements room.</p>
+  <p class="section-lead">Meetings are open to everyone. The Zoom link is sent to the <a href="https://groups.google.com/g/tensor4all">mailing list</a>. See the <a href="{{ '/community.html#meetings' | relative_url }}">full meeting history</a>.</p>
+</section>
+
+<section class="section" aria-labelledby="rust">
+  <h2 id="rust">A Rust stack for computational physics <span class="new">New</span></h2>
+  <p class="section-lead">It started as the engine for our tensor network algorithms. It has grown into general infrastructure: each layer is a separate library you can adopt on its own, whether you need fast tensor contraction, batched linear algebra or automatic differentiation over Fortran friendly layouts.</p>
+
+  <figure class="figure">
+    <div class="map-scroll"><div class="stack-map" data-focus="all"></div></div>
+    <figcaption>The layer map. Each layer depends only on the layers below it. <a href="/tensor4all-meta/stack/">Open the full stack overview</a>.</figcaption>
+  </figure>
+
+  <div class="cards">
+    <div class="card feature">
+      <span class="tag backend">tensor runtime</span>
+      <h3><a href="https://github.com/tensor4all/tenferro-rs">tenferro-rs</a></h3>
+      <p>Dense tensors with einsum, linear algebra and FFT on CPU, CUDA and XLA backends, plus eager and traced automatic differentiation (VJP, JVP, higher order). Column major, with explicit device and thread control. <span class="pill ok">crates.io 0.7.1</span></p>
+      <a class="go" href="https://tensor4all.org/tenferro-rs/">Documentation &rarr;</a>
+    </div>
+    <div class="card">
+      <span class="tag backend">building blocks</span>
+      <h3>Kernels you can use without tenferro</h3>
+      <ul>
+        <li><a href="https://github.com/tensor4all/strided-rs">strided-rs</a>: strided views and permutation kernels</li>
+        <li><a href="https://github.com/tensor4all/tcontract-rs">tcontract</a>: binary contraction over arbitrary strides, with a C ABI</li>
+        <li><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a>: batched SVD, QR, LU, Cholesky and eigensolvers</li>
+        <li><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a>: N-ary einsum with a caller supplied order</li>
+        <li><a href="https://github.com/tensor4all/hataori-rs">hataori</a>: map and pmap over Rayon and MPI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag user">algorithms</span>
+      <h3><a href="https://github.com/tensor4all/tensor4all-rs">tensor4all-rs</a></h3>
+      <p>TCI, quantics tensor trains, Fourier and shift operators, tree tensor networks and patching, with a C API and the <a href="https://github.com/tensor4all/Tensor4all.jl">Tensor4all.jl</a> frontend. <span class="pill wip">active development</span></p>
+      <a class="go" href="https://tensor4all.org/tensor4all-rs/">Documentation &rarr;</a>
+    </div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Not only for tensor networks</h3>
+      <p>The kernels know nothing about tensor networks: they take plain strided views and an explicit context, and tcontract exposes a C ABI, so existing C, C++ and Fortran codes can call them directly.</p>
+    </div>
+    <div class="card">
+      <h3>Explicit by design</h3>
+      <p>No hidden global thread pools and no behavior switched by environment variables. The caller passes a context down, so an MPI program, a Julia session and a Rust test can share one machine predictably.</p>
+    </div>
+    <div class="card">
+      <h3>Measured in the open</h3>
+      <p>Reproducible CPU and GPU comparisons against PyTorch and JAX live in <a href="https://github.com/tensor4all/tenferro-benchmark">tenferro-benchmark</a>, keyed by commit and hardware.</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a class="btn" href="/tensor4all-meta/stack/users.html">Guide for tensor network users</a>
+    <a class="btn" href="/tensor4all-meta/stack/backend.html">Guide for backend developers</a>
+    <a class="btn" href="{{ '/blog/introducing-tenferro-rs/' | relative_url }}">Why we built tenferro-rs</a>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="use-now">
+  <h2 id="use-now">Need TCI today?</h2>
+  <p class="section-lead">The Rust stack is where development happens. For production work right now, these libraries are stable and documented.</p>
+  <div class="cards">
+    <div class="card">
+      <span class="tag ok">C++ and Python</span>
+      <h3><a href="https://github.com/tensor4all/xfac">xfac</a></h3>
+      <p>The original tensor cross interpolation library, with Python bindings and tutorials.</p>
+      <a class="go" href="https://xfac.readthedocs.io/en/latest/intro.html">Read the docs &rarr;</a>
+    </div>
+    <div class="card">
+      <span class="tag ok">Julia</span>
+      <h3>TensorCrossInterpolation.jl and friends</h3>
+      <p>Core TCI, quantics TCI, quantics grids and interpolative QTT construction.</p>
+      <a class="go" href="{{ '/juliatutorials/' | relative_url }}">Julia tutorials &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Which library should I use?</h3>
+      <p>The software map lists every package with its status: use now, active development or maintenance.</p>
+      <a class="go" href="{{ '/software.html' | relative_url }}">Software map &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="community-h">
+  <h2 id="community-h">Community</h2>
+  <p class="section-lead">Most day to day discussion happens in our Matrix space: development threads, new papers, GitHub activity and announcements, each in its own room.</p>
+  <div class="cards">
+    <div class="card feature">
+      <span class="tag user">chat</span>
+      <h3>Matrix space</h3>
+      <p>Rooms for general discussion, announcements, papers, tenferro development and a live GitHub feed. Open, federated and end to end encrypted.</p>
+      <a class="go" href="{{ '/matrix.html' | relative_url }}">How to join &rarr;</a>
+    </div>
+    <div class="card">
+      <span class="tag user">announcements</span>
+      <h3>Mailing list</h3>
+      <p>Meeting announcements and Zoom links. No Google account? Write to <a href="mailto:tensor4all-admin@googlegroups.com">tensor4all-admin@googlegroups.com</a>.</p>
+      <a class="go" href="https://groups.google.com/g/tensor4all">Subscribe &rarr;</a>
+    </div>
+    <div class="card">
+      <span class="tag user">meetings</span>
+      <h3>Monthly online meetings</h3>
+      <p>Developer meetings and invited talks, recently on randomized sketching for tensor trains and MPS solvers for phonon transport.</p>
+      <a class="go" href="{{ '/community.html#meetings' | relative_url }}">Meeting history &rarr;</a>
+    </div>
+  </div>
+  <a id="onlinemeeting"></a>
+</section>
+
+<section class="section" aria-labelledby="how-h">
+  <h2 id="how-h">How we build</h2>
+  <p class="section-lead">Much of the Rust stack is written with AI coding agents under human review. We publish how we do it, and how we keep track of where code and ideas come from.</p>
+  <div class="cards">
+    <div class="card">
+      <h3>Agentic AI coding</h3>
+      <p>Slides on the workflow behind tenferro-rs and tensor4all-rs: rules, review and testing.</p>
+      <a class="go" href="https://shinaoka.github.io/agentic-ai-coding-rust/slides_en.pdf">Slides (PDF) &rarr;</a>
+    </div>
+    <div class="card">
+      <h3>Provenance and citation</h3>
+      <p>Each repository states how ported code is attributed and which papers to cite.</p>
+      <a class="go" href="https://github.com/tensor4all/tenferro-rs/blob/main/docs/PROVENANCE_AND_CITATION_POLICY.md">Policy &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="learn-h">
+  <h2 id="learn-h">Learn</h2>
+  <div class="paper">
+    <span class="ptitle"><a href="https://www.scipost.org/SciPostPhys.18.3.104">Learning tensor networks with tensor cross interpolation: new algorithms and libraries</a></span>
+    <span class="pauth">Y. Núñez Fernández, M. K. Ritter, M. Jeannin, J.-W. Li, T. Kloss, T. Louvet, S. Terasaki, O. Parcollet, J. von Delft, H. Shinaoka, X. Waintal. SciPost Phys. 18, 104 (2025), <a href="https://arxiv.org/abs/2407.02454">arXiv:2407.02454</a>.</span>
+  </div>
+  <p>A pedagogical introduction with an overview of the literature. More in <a href="{{ '/learn.html' | relative_url }}">Learn</a>: <a href="{{ '/reference.html' | relative_url }}">references</a>, <a href="{{ '/juliatutorials/' | relative_url }}">tutorials</a>, <a href="{{ '/lecture/' | relative_url }}">lecture notes</a>, <a href="{{ '/workshop/' | relative_url }}">workshops</a> and the <a href="{{ '/faq.html' | relative_url }}">FAQ</a>.</p>
+</section>
+
+</div>
+<script src="https://tensor4all.org/tensor4all-meta/stack/assets/stack-map.js" defer></script>

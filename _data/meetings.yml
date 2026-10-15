@@ -1,0 +1,75 @@
+# Monthly online meetings, newest first.
+# kind: developer | talk
+# time: shown for upcoming meetings only. Zoom links go to the mailing list, never here.
+- date: 2026-10-27
+  kind: developer
+  time: "14:00 CET / 09:00 EDT / 22:00 JST"
+- date: 2026-09-22
+  kind: developer
+  note: Highlights from the past three months.
+  links:
+    - label: slides
+      url: https://github.com/tensor4all/tensor4all-meta/blob/main/slides/tensor4all20260922.pdf
+- date: 2026-07-21
+  kind: developer
+  note: Discussion on copyright and scientific credit, which led to our provenance rules and citation policies.
+  links:
+    - label: provenance rules
+      url: https://github.com/tensor4all/tensor4all-agent-rules/blob/main/rules/common/provenance.md
+- date: 2026-06-30
+  kind: talk
+  speaker: Sangyeop Lee
+  title: Solving the Peierls-Boltzmann transport equation with matrix product states
+  links:
+    - label: arXiv:2604.06153
+      url: https://arxiv.org/abs/2604.06153
+- date: 2026-06-16
+  kind: developer
+- date: 2026-05-26
+  kind: developer
+  speaker: Christoph Groth
+  title: Demonstration of a workflow for coding with AI agents using the pi harness
+- date: 2026-05-19
+  kind: developer
+- date: 2026-05-12
+  kind: talk
+  speaker: Paul Cazeaux
+  title: Oblivious randomized sketching for tensor trains
+  links:
+    - label: arXiv:2603.11009
+      url: https://arxiv.org/abs/2603.11009
+- date: 2026-04-14
+  kind: developer
+- date: 2026-03-17
+  kind: developer
+- date: 2026-02-10
+  kind: developer
+- date: 2026-01-20
+  kind: talk
+  speaker: Engin Danis
+  title: Tensor-train finite difference method for compressible flows
+- date: 2026-01-13
+  kind: developer
+- date: 2025-12-02
+  kind: developer
+- date: 2025-07-08
+  kind: talk
+  speaker: Leonhard Hoelscher
+- date: 2025-06-06
+  kind: talk
+  speaker: Maksymilian Środa
+- date: 2025-05-06
+- date: 2025-03-01
+- date: 2025-02-18
+- date: 2025-01-13
+  kind: talk
+  speaker: Yuehaw Khoo
+- date: 2024-11-26
+- date: 2024-10-29
+- date: 2024-09-30
+- date: 2024-08-26
+- date: 2024-07-01
+- date: 2024-06-03
+- date: 2024-04-22
+- date: 2024-03-25
+- date: 2024-02-22

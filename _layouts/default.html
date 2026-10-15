@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="{{ page.lang | default: 'en' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% if page.url == "/" %}<title>tensor4all</title>{% else %}<title>{{ page.title | default: "tensor4all" }} · tensor4all</title>{% endif %}
+<meta name="description" content="{{ page.description | default: 'Open software and an open research community for tensor cross interpolation, quantics tensor trains and tensor networks.' }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<script>
+  window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true } };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+</head>
+<body>
+{% assign u = page.url %}
+<header class="topbar"><div class="inner">
+  <a class="brand" href="{{ '/' | relative_url }}">tensor4all</a>
+  <nav>
+    <a href="{{ '/software.html' | relative_url }}"{% if u == "/software.html" or u == "/julia.html" %} aria-current="page"{% endif %}>Software</a>
+    <a href="/tensor4all-meta/stack/">Rust stack <span class="new">New</span></a>
+    <a href="{{ '/learn.html' | relative_url }}"{% if u == "/learn.html" or u == "/reference.html" or u contains "/lecture/" or u contains "/juliatutorials/" or u contains "/workshop/" or u == "/faq.html" %} aria-current="page"{% endif %}>Learn</a>
+    <a href="{{ '/community.html' | relative_url }}"{% if u == "/community.html" or u == "/matrix.html" %} aria-current="page"{% endif %}>Community</a>
+    <a href="{{ '/blog/' | relative_url }}"{% if u contains "/blog/" %} aria-current="page"{% endif %}>Blog</a>
+    <a href="{{ '/about.html' | relative_url }}"{% if u == "/about.html" %} aria-current="page"{% endif %}>About</a>
+  </nav>
+  <a class="gh" href="https://github.com/tensor4all" aria-label="tensor4all on GitHub">GitHub</a>
+</div></header>
+
+{% if page.layout_kind == "home" %}
+{{ content }}
+{% else %}
+<div class="layout"><main class="prose">
+{{ content }}
+</main></div>
+{% endif %}
+
+<footer><div class="inner">
+  <div class="foot-cols">
+    <div>
+      <strong>tensor4all</strong><br>
+      Open software and an open community for tensor cross interpolation, quantics tensor trains and tensor networks.
+    </div>
+    <div>
+      <a href="https://matrix.to/#/#tensor4all:matrix.org">Matrix space</a> ·
+      <a href="https://groups.google.com/g/tensor4all">Mailing list</a> ·
+      <a href="https://github.com/tensor4all">GitHub</a> ·
+      <a href="https://github.com/tensor4all/tensor4all.github.io">Edit this site</a>
+    </div>
+  </div>
+</div></footer>
+<script>
+  // Meetings are rendered at build time; move any that have passed since the last build.
+  (function () {
+    var today = new Date().toISOString().slice(0, 10);
+    document.querySelectorAll("[data-meeting-date]").forEach(function (el) {
+      if (el.getAttribute("data-meeting-date") < today) {
+        var past = document.getElementById(el.getAttribute("data-past-target"));
+        if (past) { el.classList.remove("upcoming"); past.insertBefore(el, past.firstChild); }
+        else { el.hidden = true; }
+      }
+    });
+    document.querySelectorAll("[data-upcoming-list]").forEach(function (list) {
+      var fallback = document.getElementById(list.getAttribute("data-upcoming-list") + "-none");
+      if (fallback && !list.querySelector("[data-meeting-date]:not([hidden])")) fallback.hidden = false;
+    });
+  })();
+</script>
+</body>
+</html>
