@@ -27,6 +27,10 @@ tensor4all maintains two generations of software. The established C++, Python an
     <span class="q">I want to run many tasks over threads and MPI ranks</span>
     <span class="a">hataori</span>
   </a>
+  <a class="choice" href="#benchmarks">
+    <span class="q">I want to see measured performance before I commit</span>
+    <span class="a">Benchmark results, keyed by commit and hardware</span>
+  </a>
   <a class="choice" href="#maintenance">
     <span class="q">I have an existing workflow on an older package</span>
     <span class="a">Maintenance packages</span>
@@ -68,7 +72,7 @@ A layered set of Rust libraries. Each layer depends only on the layers below it,
     <li><span class="pill ok">crates.io 0.7.1</span></li>
     <li><a href="https://tensor4all.org/tenferro-rs/">Documentation</a></li>
     <li><a href="https://github.com/tensor4all/tenferro-rs">Source</a></li>
-    <li><a href="https://github.com/tensor4all/tenferro-benchmark">Benchmarks vs PyTorch and JAX</a></li>
+    <li><a href="https://tensor4all.org/tenferro-benchmark/">Benchmark results vs PyTorch and JAX</a> (<a href="https://github.com/tensor4all/tenferro-benchmark">repository</a>)</li>
   </ul>
 </div>
 
@@ -79,17 +83,17 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
 <div class="cards">
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tcontract-rs">tcontract</a></h3>
-    <p>Binary tensor contraction over arbitrary strides, with a TAPP and DLPack C ABI. <a href="https://github.com/tensor4all/tcontract-benchmark">Benchmarks</a>.</p>
+    <p>Binary tensor contraction over arbitrary strides, with a TAPP and DLPack C ABI. <a href="https://tensor4all.org/tcontract-benchmark/">Benchmark results</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/tlinalg-rs">tlinalg</a></h3>
-    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed, optionally parallelized along the batch dimension, with a C API. <a href="https://github.com/tensor4all/tlinalg-benchmark">Benchmarks</a>.</p>
+    <p>Batched SVD, QR, LU, Cholesky and eigensolvers, faer backed or LAPACK backed, optionally parallelized along the batch dimension, with a C API. <a href="https://tensor4all.org/tlinalg-benchmark/">Benchmark results</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/cpueinsum-rs">cpueinsum</a></h3>
-    <p>N-ary einsum over integer labels with a caller supplied contraction order, with a C API.</p>
+    <p>N-ary einsum over integer labels with a caller supplied contraction order, with a C API. <a href="https://tensor4all.org/cpueinsum-benchmark/">Benchmark results</a>.</p>
     <span class="pill wip">git</span>
   </div>
   <div class="card">
@@ -104,22 +108,24 @@ These libraries know nothing about tensor networks or about tenferro's tensor ty
   </div>
   <div class="card">
     <h3><a href="https://github.com/tensor4all/faer">t4a-faer</a></h3>
-    <p>Our fork of <a href="https://github.com/sarah-quinones/faer-rs">faer</a>, the pure Rust linear algebra library by Sarah Quinones. It adds strided and batched entry points, caller owned workspaces, an explicit thread policy and numerical fixes; every change is recorded in its <a href="https://github.com/tensor4all/faer/blob/main/PATCHSET.md">patch ledger</a>.</p>
+    <p>Our fork of <a href="https://github.com/sarah-quinones/faer-rs">faer</a>, the pure Rust linear algebra library by Sarah Quinones. It adds strided and batched entry points, caller owned workspaces, an explicit thread policy and numerical fixes; every change is recorded in its <a href="https://github.com/tensor4all/faer/blob/main/PATCHSET.md">patch ledger</a>. <a href="https://tensor4all.org/faer-benchmark/">Benchmark results</a> against upstream.</p>
     <span class="pill ok">crates.io t4a-faer 0.24.4</span>
   </div>
 </div>
 
 ### Benchmarks {#benchmarks}
 
-Performance claims are backed by public benchmark repositories, kept separate from the libraries so that results can be keyed by commit and hardware.
+Performance claims are backed by public benchmark repositories, kept separate from the libraries so that results can be keyed by commit and hardware. Where a campaign publishes its results as a web page, the link is in the first column. The main entry point is the <a href="https://tensor4all.org/tenferro-benchmark/">tenferro-benchmark results</a>, which compare the whole stack against PyTorch and JAX.
 
-| Repository | What it measures |
-| --- | --- |
-| [tenferro-benchmark](https://github.com/tensor4all/tenferro-benchmark) | tenferro-rs against PyTorch and JAX on CPU and GPU |
-| [tensor4all-benchmark](https://github.com/tensor4all/tensor4all-benchmark) | Tensor network algorithms in tensor4all-rs: QTT products and MPO-MPO contraction |
-| [tcontract-benchmark](https://github.com/tensor4all/tcontract-benchmark) | Binary strided contraction in tcontract |
-| [tlinalg-benchmark](https://github.com/tensor4all/tlinalg-benchmark) | Batched factorizations in tlinalg |
-| [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite) | strided-rs kernels against HPTT, Julia Base and Strided.jl |
+| Results | Repository | What it measures |
+| --- | --- | --- |
+| [tenferro-benchmark](https://tensor4all.org/tenferro-benchmark/) | [source](https://github.com/tensor4all/tenferro-benchmark) | tenferro-rs against PyTorch and JAX on CPU and GPU |
+| [tcontract-benchmark](https://tensor4all.org/tcontract-benchmark/) | [source](https://github.com/tensor4all/tcontract-benchmark) | Binary strided contraction in tcontract |
+| [tlinalg-benchmark](https://tensor4all.org/tlinalg-benchmark/) | [source](https://github.com/tensor4all/tlinalg-benchmark) | Batched factorizations in tlinalg |
+| [cpueinsum-benchmark](https://tensor4all.org/cpueinsum-benchmark/) | [source](https://github.com/tensor4all/cpueinsum-benchmark) | N-ary einsum in cpueinsum over a standardized instance corpus |
+| [faer-benchmark](https://tensor4all.org/faer-benchmark/) | [source](https://github.com/tensor4all/faer-benchmark) | The t4a-faer fork against upstream faer, keyed by fork commit and upstream revision |
+| (repository only) | [tensor4all-benchmark](https://github.com/tensor4all/tensor4all-benchmark) | Tensor network algorithms in tensor4all-rs: QTT products and MPO-MPO contraction |
+| (repository only) | [strided-rs-benchmark-suite](https://github.com/tensor4all/strided-rs-benchmark-suite) | strided-rs kernels against HPTT, Julia Base and Strided.jl |
 
 <p class="small">Release status changes quickly; the <a href="/tensor4all-meta/stack/#repos">repository table</a> in the stack overview is kept current.</p>
 
