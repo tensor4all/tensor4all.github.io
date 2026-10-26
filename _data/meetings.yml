@@ -4,6 +4,12 @@
 - date: 2026-10-27
   kind: developer
   time: "14:00 CET / 09:00 EDT / 22:00 JST"
+  note: The stack at a glance, tree methods in tensor4all-rs, and the split-out compute engine.
+  links:
+    - label: slides
+      url: https://github.com/tensor4all/tensor4all-meta/blob/main/slides/tensor4all20261027.pdf
+    - label: tree methods in detail
+      url: https://github.com/tensor4all/tensor4all-meta/blob/main/slides/tensor4all20261027-lingrui-cheng.pdf
 - date: 2026-09-22
   kind: developer
   note: Highlights from the past three months.
