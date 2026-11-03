@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 710" font-family="Helvetica, Arial, sans-serif" role="img">
+<title>A supervising agent drives agents on several machines</title>
+<style>
+.h{font-size:16px;font-weight:bold;fill:#1f2328}
+.s{font-size:13.5px;fill:#4a515c}
+.ct{font-size:13.5px;fill:#1f2328}
+.tag{font-size:12.5px;font-weight:bold;fill:#2e8a57}
+.lvl{font-size:12px;font-weight:bold;letter-spacing:1px}
+.num{font-size:13px;font-weight:bold;fill:#fff}
+.lg{font-size:13px;fill:#4a515c}
+.lp{font-size:13px;fill:#6a4fb3}
+.lr{font-size:13px;fill:#c0392b}
+.mono{font-family:Menlo,Consolas,monospace;font-size:13px;fill:#1f2328}
+</style>
+<rect width="980" height="710" fill="#ffffff"/>
+<rect x="24" y="16" width="262" height="82" rx="8" fill="#eef4fc" stroke="#2f6db3" stroke-width="1.6"/>
+<text class="lvl" x="40" y="38" fill="#2f6db3">LEVEL 0: HUMAN</text>
+<text class="h" x="40" y="62">Maintainer</text>
+<text class="s" x="40" y="84">talks only to the super agent</text>
+<path d="M60.0,100.0 L60.0,160.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="60.0,176.0 52.0,160.0 68.0,160.0" fill="#6a4fb3"/>
+<text class="lp" x="68" y="132">instructions,</text>
+<text class="lp" x="68" y="148">decisions</text>
+<path d="M230.0,176.0 L230.0,116.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="230.0,100.0 238.0,116.0 222.0,116.0" fill="#5b6270"/>
+<text class="lg" x="238" y="132">escalated</text>
+<text class="lg" x="238" y="148">questions</text>
+<rect x="24" y="178" width="262" height="212" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.6"/>
+<text class="lvl" x="40" y="200" fill="#2e8a57">LEVEL 1</text>
+<text class="h" x="40" y="222">Super agent</text>
+<text class="s" x="40" y="241">one interactive agent session</text>
+<text class="s" x="40" y="266">· runs rounds on a schedule</text>
+<text class="s" x="40" y="285">· splits work into phases</text>
+<text class="s" x="40" y="304">· answers from the decision profile</text>
+<text class="s" x="40" y="323">· schedules measurement jobs</text>
+<text class="s" x="40" y="342">· reviews and merges pull requests</text>
+<text class="s" x="40" y="361">· escalates what the profile lacks</text>
+<rect x="352" y="16" width="604" height="374" rx="10" fill="#fdf8f3" stroke="#b5651d" stroke-width="1.3" stroke-dasharray="6 4"/>
+<text class="lvl" x="368" y="38" fill="#b5651d">LEVEL 2: MACHINES, SEVERAL AGENTS EACH</text>
+<rect x="366" y="50" width="288" height="150" rx="8" fill="#fff" stroke="#b5651d" stroke-width="1.4"/>
+<text class="h" x="380" y="74">Quiet benchmark host</text>
+<text class="s" x="380" y="93">Zen 5, pinned cores, boost off</text>
+<rect x="380" y="104" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="390" y="122">benchmark agent: weekly CPU run</text>
+<rect x="380" y="136" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="390" y="154">optimization agent: paired A/B</text>
+<text class="s" x="380" y="188">reproducible numbers</text>
+<rect x="660" y="50" width="288" height="150" rx="8" fill="#fff" stroke="#b5651d" stroke-width="1.4"/>
+<text class="h" x="674" y="74">Implementation host</text>
+<text class="s" x="674" y="93">64 cores + NVIDIA A100</text>
+<rect x="674" y="104" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="684" y="122">workers on inexpensive models</text>
+<rect x="674" y="136" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="684" y="154">stronger model: design phases</text>
+<text class="s" x="674" y="188">GPU tests for PRs run here</text>
+<rect x="366" y="212" width="288" height="102" rx="8" fill="#fff" stroke="#b5651d" stroke-width="1.4"/>
+<text class="h" x="380" y="236">Many-core host</text>
+<text class="s" x="380" y="255">64-core AMD EPYC</text>
+<rect x="380" y="266" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="390" y="284">scaling, library comparisons</text>
+<rect x="660" y="212" width="288" height="102" rx="8" fill="#fff" stroke="#b5651d" stroke-width="1.4"/>
+<text class="h" x="674" y="236">Laptop</text>
+<text class="s" x="674" y="255">Apple M5 Max, runs the super agent</text>
+<rect x="674" y="266" width="260" height="26" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="684" y="284">macOS, Accelerate, ARM kernels</text>
+<text class="s" x="368" y="346">Workers push branches and open pull requests. They hold no SSH</text>
+<text class="s" x="368" y="364">keys or release tokens and have no route to other machines.</text>
+<path d="M288.0,250.0 L334.0,250.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="350.0,250.0 334.0,258.0 334.0,242.0" fill="#6a4fb3"/>
+<text class="lp" x="292" y="222">phases,</text>
+<text class="lp" x="292" y="237">jobs</text>
+<path d="M350.0,318.0 L304.0,318.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="288.0,318.0 304.0,310.0 304.0,326.0" fill="#5b6270"/>
+<text class="lg" x="292" y="340">output,</text>
+<text class="lg" x="292" y="355">numbers</text>
+<rect x="24" y="470" width="580" height="224" rx="10" fill="#f3effb" stroke="#6a4fb3" stroke-width="1.8"/>
+<text class="h" x="40" y="496">Advisor repository (private)</text>
+<text class="s" x="40" y="516">the maintainer's judgment, shared with every agent</text>
+<rect x="40" y="528" width="174" height="80" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="50" y="547" font-weight="bold">Decision profile</text>
+<text class="s" x="50" y="565">rules from past</text>
+<text class="s" x="50" y="581">decisions, each with</text>
+<text class="s" x="50" y="597">its precedent</text>
+<rect x="224" y="528" width="174" height="80" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="234" y="547" font-weight="bold">Shared skills</text>
+<text class="s" x="234" y="565">autopilot, review</text>
+<text class="s" x="234" y="581">and benchmark</text>
+<text class="s" x="234" y="597">procedures</text>
+<rect x="408" y="528" width="174" height="80" rx="5" fill="#edf0f7" stroke="#c9d0de" stroke-width="1.4"/>
+<text class="ct" x="418" y="547" font-weight="bold">State</text>
+<text class="s" x="418" y="565">handoff notes, one</text>
+<text class="s" x="418" y="581">file per agent,</text>
+<text class="s" x="418" y="597">daily worklog</text>
+<text class="s" x="40" y="662">Self-improving: transcripts and worklogs are mined for new</text>
+<text class="s" x="40" y="680">decisions, which become rules every agent reads next time.</text>
+<path d="M495.0,609.0 L495.0,620.0 L127.0,620.0 L127.0,620.0" stroke="#6a4fb3" stroke-width="2.6" fill="none" stroke-linejoin="round"/>
+<polygon points="127.0,610.0 133.0,620.0 121.0,620.0" fill="#6a4fb3"/>
+<text class="lp" x="311" y="638" text-anchor="middle">new rules</text>
+<path d="M150.0,468.0 L150.0,408.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="150.0,392.0 158.0,408.0 142.0,408.0" fill="#6a4fb3"/>
+<text class="lp" x="158" y="436">reads</text>
+<path d="M420.0,468.0 L420.0,408.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="420.0,392.0 428.0,408.0 412.0,408.0" fill="#6a4fb3"/>
+<text class="lp" x="428" y="424">read by</text>
+<text class="lp" x="428" y="439">every worker</text>
+<path d="M540.0,392.0 L540.0,452.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="540.0,468.0 532.0,452.0 548.0,452.0" fill="#5b6270"/>
+<text class="lg" x="548" y="436">worklogs</text>
+<rect x="620" y="470" width="336" height="200" rx="8" fill="#fff" stroke="#5b6270" stroke-width="1.4"/>
+<text class="h" x="636" y="496">GitHub: tensor4all/*</text>
+<text class="s" x="636" y="522">branches, pull requests, issues</text>
+<text class="s" x="636" y="539">(assigned when work starts)</text>
+<text class="s" x="636" y="556"></text>
+<text class="s" x="636" y="573">merges by the super agent or</text>
+<text class="s" x="636" y="590">scheduled jobs, under written</text>
+<text class="s" x="636" y="607">criteria; a hold: line stops them</text>
+<path d="M790.0,392.0 L790.0,452.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="790.0,468.0 782.0,452.0 798.0,452.0" fill="#5b6270"/>
+<text class="lg" x="798" y="436">push, open PRs</text>
+</svg>

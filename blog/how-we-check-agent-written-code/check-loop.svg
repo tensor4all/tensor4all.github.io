@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 600" font-family="Helvetica, Arial, sans-serif" role="img">
+<title>Checks that keep running against main</title>
+<style>
+.h{font-size:16px;font-weight:bold;fill:#1f2328}
+.s{font-size:13.5px;fill:#4a515c}
+.ct{font-size:13.5px;fill:#1f2328}
+.tag{font-size:12.5px;font-weight:bold;fill:#2e8a57}
+.lvl{font-size:12px;font-weight:bold;letter-spacing:1px}
+.num{font-size:13px;font-weight:bold;fill:#fff}
+.lg{font-size:13px;fill:#4a515c}
+.lp{font-size:13px;fill:#6a4fb3}
+.lr{font-size:13px;fill:#c0392b}
+.mono{font-family:Menlo,Consolas,monospace;font-size:13px;fill:#1f2328}
+</style>
+<rect width="980" height="600" fill="#ffffff"/>
+<rect x="24" y="200" width="176" height="92" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/>
+<circle cx="46" cy="222" r="11" fill="#1f2328"/><text class="num" x="46" y="226.5" text-anchor="middle">1</text>
+<text class="h" x="64" y="227">main branch</text>
+<text class="s" x="40" y="252">changes every day;</text>
+<text class="s" x="40" y="269">checked as it is now</text>
+<circle cx="282" cy="26" r="11" fill="#2e8a57"/><text class="num" x="282" y="30.5" text-anchor="middle">2</text>
+<text class="tag" x="300" y="31">ON A SCHEDULE, EACH CHECK PULLS THE CURRENT MAIN</text>
+<rect x="272" y="50" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="74">DAILY</text>
+<text class="h" x="366" y="74">Audit bots</text>
+<text class="s" x="366" y="95">bug hunt, closed-issue re-check</text>
+<rect x="272" y="116" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="140">NIGHTLY</text>
+<text class="h" x="366" y="140">AD oracle replay</text>
+<text class="s" x="366" y="161">183 entries vs PyTorch and finite differences</text>
+<rect x="272" y="182" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="206">NIGHTLY</text>
+<text class="h" x="366" y="206">LAPACK validation</text>
+<text class="s" x="366" y="227">x86 nightly, aarch64 weekly; 18,172-call SVD suite</text>
+<rect x="272" y="248" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="272">WEEKLY</text>
+<text class="h" x="366" y="272">Performance audit</text>
+<text class="s" x="366" y="293">performance rules, missing regression benchmarks</text>
+<rect x="272" y="314" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="338">WEEKEND</text>
+<text class="h" x="366" y="338">CPU benchmarks</text>
+<text class="s" x="366" y="359">dedicated host; results on a public dashboard</text>
+<rect x="272" y="380" width="430" height="58" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.4"/>
+<text class="tag" x="286" y="404">WEEKEND</text>
+<text class="h" x="366" y="404">GPU benchmarks</text>
+<text class="s" x="366" y="425">A100 on RunPod; results on a public dashboard</text>
+<path d="M202.0,246.0 L236.0,246.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<path d="M236.0,79.0 L236.0,409.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<path d="M236.0,79.0 L254.0,79.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,79.0 254.0,87.0 254.0,71.0" fill="#5b6270"/>
+<path d="M236.0,145.0 L254.0,145.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,145.0 254.0,153.0 254.0,137.0" fill="#5b6270"/>
+<path d="M236.0,211.0 L254.0,211.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,211.0 254.0,219.0 254.0,203.0" fill="#5b6270"/>
+<path d="M236.0,277.0 L254.0,277.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,277.0 254.0,285.0 254.0,269.0" fill="#5b6270"/>
+<path d="M236.0,343.0 L254.0,343.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,343.0 254.0,351.0 254.0,335.0" fill="#5b6270"/>
+<path d="M236.0,409.0 L254.0,409.0" stroke="#5b6270" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="270.0,409.0 254.0,417.0 254.0,401.0" fill="#5b6270"/>
+<path d="M704.0,79.0 L740.0,79.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M704.0,145.0 L740.0,145.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M704.0,211.0 L740.0,211.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M704.0,277.0 L740.0,277.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M704.0,343.0 L740.0,343.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M704.0,409.0 L740.0,409.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M740.0,79.0 L740.0,409.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round" stroke-dasharray="7 4"/>
+<path d="M740.0,246.0 L766.0,246.0" stroke="#c0392b" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="782.0,246.0 766.0,254.0 766.0,238.0" fill="#c0392b"/>
+<text class="lr" x="748" y="150">on a bug or</text>
+<text class="lr" x="748" y="166">regression</text>
+<rect x="784" y="196" width="180" height="100" rx="8" fill="#fdf3e1" stroke="#c08a2e" stroke-width="1.6"/>
+<circle cx="806" cy="218" r="11" fill="#c08a2e"/><text class="num" x="806" y="222.5" text-anchor="middle">3</text>
+<text class="h" x="824" y="223">Public issue</text>
+<text class="s" x="800" y="248">opened automatically,</text>
+<text class="s" x="800" y="265">visible until fixed</text>
+<rect x="612" y="490" width="300" height="92" rx="8" fill="#eef8f1" stroke="#2e8a57" stroke-width="1.6"/>
+<circle cx="634" cy="512" r="11" fill="#2e8a57"/><text class="num" x="634" y="516.5" text-anchor="middle">4</text>
+<text class="h" x="652" y="517">Super agent</text>
+<text class="s" x="628" y="542">triages and assigns a worker;</text>
+<text class="s" x="628" y="559">adds a check if one was missing</text>
+<path d="M874.0,298.0 L874.0,472.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="874.0,488.0 866.0,472.0 882.0,472.0" fill="#6a4fb3"/>
+<text class="lp" x="882" y="400">triage</text>
+<rect x="236" y="490" width="300" height="92" rx="8" fill="#fff" stroke="#6a4fb3" stroke-width="1.6"/>
+<circle cx="258" cy="512" r="11" fill="#6a4fb3"/><text class="num" x="258" y="516.5" text-anchor="middle">5</text>
+<text class="h" x="276" y="517">Fix pull request</text>
+<text class="s" x="252" y="542">review, then the same CI gates</text>
+<text class="s" x="252" y="559">as any other change</text>
+<path d="M610.0,536.0 L554.0,536.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="538.0,536.0 554.0,528.0 554.0,544.0" fill="#6a4fb3"/>
+<text class="lp" x="574" y="526" text-anchor="middle">worker fixes</text>
+<path d="M234.0,536.0 L112.0,536.0 L112.0,310.0" stroke="#6a4fb3" stroke-width="3.4" fill="none" stroke-linejoin="round"/>
+<polygon points="112.0,294.0 120.0,310.0 104.0,310.0" fill="#6a4fb3"/>
+<text class="lp" x="120" y="420">merged</text>
+</svg>
