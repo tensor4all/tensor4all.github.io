@@ -45,6 +45,12 @@ We also decided that AD rule files are verified by numerical checks, not by line
 - **LAPACK validation.** Our fork of faer, [t4a-faer](https://github.com/tensor4all/faer), runs numerical validation against LAPACK test inputs, nightly on x86 and weekly on aarch64. For SVD, for example, we adapted the test families of reference LAPACK's own SVD test drivers into an 18,172-call suite (4,543 calls for each of f32, f64, c32 and c64) with known, clustered and extreme spectra. It is also how we find what is still broken: when it reports a failure, an issue is opened and the failure stays visible until it is fixed.
 - **Recording upstream bugs.** Every difference between t4a-faer and upstream faer is listed in a public ledger, `PATCHSET.md`, with its status, how it was verified ("fails before, passes after"), and, for upstream bugs, a prepared upstream report where one exists.
 
+### An example: a panic the SVD suite caught
+
+In late October the SVD suite reported a panic for f32 and c32. `svd` stopped with "buffer is not large enough", even though its workspace had been sized by `svd_scratch` with exactly the same arguments. The smallest failing case was an 8 by 8 rank-one matrix, computed by divide and conquer, with only `V` requested.
+
+The fix ([tensor4all/faer#73](https://github.com/tensor4all/faer/issues/73)) corrects the workspace query itself instead of padding the buffer: it models the temporaries that each merge step keeps alive. A focused regression test fails before the fix and passes after it, 4,800 calls around the recursion boundaries pass for all four scalar types, and the full 18,172-call suite then completed without a call failure. The same run also exposed a separate f32 orthogonality problem, which was tracked on its own as [#75](https://github.com/tensor4all/faer/issues/75). The workspace bug is also present in upstream faer 0.24.4, so a self-contained report with a reproducer was prepared for upstream.
+
 ## Performance
 
 In HPC, performance regressions are nearly as costly as wrong answers, and they are easier to miss because nothing fails. We treat them the same way.
