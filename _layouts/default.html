@@ -32,8 +32,13 @@
 {% if page.layout_kind == "home" %}
 {{ content }}
 {% else %}
+{% assign is_blog_post = false %}
+{% if page.url contains '/blog/' and page.url != '/blog/' %}{% assign is_blog_post = true %}{% endif %}
+{% if page.url contains '-ja/' %}{% assign back_label = '← ブログ一覧' %}{% elsif page.url contains '-zh/' %}{% assign back_label = '← 博客列表' %}{% else %}{% assign back_label = '← All posts' %}{% endif %}
 <div class="layout"><main class="prose">
+{% if is_blog_post %}<p class="blog-back"><a href="/blog/">{{ back_label }}</a></p>{% endif %}
 {{ content }}
+{% if is_blog_post %}<p class="blog-back"><a href="/blog/">{{ back_label }}</a></p>{% endif %}
 </main></div>
 {% endif %}
 

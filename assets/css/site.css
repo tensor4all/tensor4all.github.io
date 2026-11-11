@@ -222,3 +222,8 @@ h2 .new { font-size: 12px; padding: 4px 8px 3px; margin-left: 8px; top: -3px; }
 .card .pill { margin-top: auto; width: fit-content; }
 .small { font-size: 14px; color: var(--muted); }
 .prose > .eyebrow + h1 { margin-top: 0; }
+
+.blog-back { font-size: 15px; margin: 0 0 18px; }
+.blog-back a { color: var(--muted); text-decoration: none; }
+.blog-back a:hover { text-decoration: underline; }
+main.prose > .blog-back:last-child { margin: 32px 0 0; }
