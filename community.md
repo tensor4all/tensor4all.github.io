@@ -26,6 +26,12 @@ tensor4all is an open community. Anyone working on tensor networks, tensor cross
     <p>Issues and pull requests on any repository are welcome. Each repository's README and AGENTS.md describe how to contribute.</p>
     <a class="go" href="https://github.com/tensor4all">github.com/tensor4all &rarr;</a>
   </div>
+  <div class="card">
+    <span class="tag user">developers</span>
+    <h3>For developers</h3>
+    <p>How humans and AI agents contribute: claiming issues, naming the model in each PR, cross-provider review, labels and automation.</p>
+    <a class="go" href="https://github.com/tensor4all/tensor4all-meta/blob/main/docs/contributing/README.md">Developer guide &rarr;</a>
+  </div>
 </div>
 
 The [Discourse forum](https://tensor4all.discourse.group) is kept in read-only mode as an archive.
@@ -50,7 +56,7 @@ We meet online about once a month. Developer meetings cover progress on the soft
 
 ## How we build
 
-Much of the Rust stack is developed with AI coding agents under human review. Two things we share openly:
+Much of the Rust stack is developed with AI coding agents under human review. The [developer guide](https://github.com/tensor4all/tensor4all-meta/blob/main/docs/contributing/README.md) is the one-screen summary of how contributions flow. Two more things we share openly:
 
 - **Workflow.** [Agentic AI coding in Rust](https://shinaoka.github.io/agentic-ai-coding-rust/slides_en.pdf) (slides) describes the rules, review and testing behind tenferro-rs and tensor4all-rs.
 - **Provenance.** After a developer meeting on copyright and scientific credit in July 2026, we adopted [provenance rules](https://github.com/tensor4all/tensor4all-agent-rules/blob/main/rules/common/provenance.md) for agents and per repository citation policies: [tensor4all-rs](https://github.com/tensor4all/tensor4all-rs/blob/main/docs/PROVENANCE_AND_CITATION_POLICY.md), [tenferro-rs](https://github.com/tensor4all/tenferro-rs/blob/main/docs/PROVENANCE_AND_CITATION_POLICY.md), [strided-rs](https://github.com/tensor4all/strided-rs/blob/main/docs/PROVENANCE_AND_CITATION_POLICY.md).
