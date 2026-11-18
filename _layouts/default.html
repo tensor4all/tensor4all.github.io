@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<link rel="icon" href="{{ '/assets/logo/favicon.svg' | relative_url }}" type="image/svg+xml">
+<link rel="icon" href="{{ '/assets/logo/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="{{ '/assets/logo/apple-touch-icon.png' | relative_url }}">
 <script>
   window.MathJax = { tex: { inlineMath: [["$", "$"], ["\\(", "\\)"]], displayMath: [["$$", "$$"], ["\\[", "\\]"]], processEscapes: true } };
 </script>
@@ -17,7 +20,7 @@
 <body>
 {% assign u = page.url %}
 <header class="topbar"><div class="inner">
-  <a class="brand" href="{{ '/' | relative_url }}">tensor4all</a>
+  <a class="brand" href="{{ '/' | relative_url }}"><img class="logo-light" src="{{ '/assets/logo/tensor4all-wordmark.svg' | relative_url }}" alt="tensor4all" height="28"><img class="logo-dark" src="{{ '/assets/logo/tensor4all-wordmark-dark.svg' | relative_url }}" alt="" aria-hidden="true" height="28"></a>
   <nav>
     <a href="{{ '/software.html' | relative_url }}"{% if u == "/software.html" or u == "/julia.html" %} aria-current="page"{% endif %}>Software</a>
     <a href="/tensor4all-meta/stack/">Rust stack <span class="new">New</span></a>
