@@ -106,6 +106,16 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
 
 /* home */
 .hero { padding: 64px 0 24px; }
+.hero-logo { margin: 0 0 28px; }
+.hero-logo img { display: block; height: 88px; width: auto; max-width: 100%; }
+.hero-logo .logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .hero-logo .logo-light { display: none; }
+  :root:not([data-theme="light"]) .hero-logo .logo-dark { display: block; }
+}
+:root[data-theme="dark"] .hero-logo .logo-light { display: none; }
+:root[data-theme="dark"] .hero-logo .logo-dark { display: block; }
+@media (max-width: 640px) { .hero-logo img { height: 56px; } }
 .eyebrow { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm); font-weight: 600; margin: 0 0 10px; }
 .hero h1 { max-width: 18em; }
 .lead { font-size: 19px; color: var(--muted); max-width: 42em; margin: 0 0 22px; }
